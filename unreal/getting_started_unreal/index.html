@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Getting Started - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Getting Started";
+    var mkdocs_page_input_path = "unreal\\getting_started_unreal.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="getting-the-power-ik-unreal-plugin">Getting the Power IK Unreal Plugin</h1>
+<p>The Power IK Unreal Plugin can be purchased and installed through the Unreal Marketplace. </p>
+<p>Power IK Unreal Plugin is currently available only for Unreal 4.24 on Windows 64 bit. If you require a different version for a different platform, please contact support@poweranimated.com.</p>
+<h2 id="installation">Installation</h2>
+<p>The fastest way to get started with Power IK is to purchase it from the Unreal Marketplace and use the Epic Games launcher to install it directly into your engine.</p>
+<p>To install it manually, follow these steps:</p>
+<ol>
+<li>Download and unzip the PowerIK plugin</li>
+<li>Copy the \PowerIK directory to your project plugins folder: C:\UnrealProjects\MyProject\Plugins</li>
+<li>Right click on your .uproject file and select <em>Generate Visual Studio project files</em></li>
+<li>Build and launch the project as normal..</li>
+</ol>
+<p><img alt="Gen SLN" src="../img/quick_start/gen_sln.png" /></p>
+<p>Note: If you encounter an error when starting Unreal after installing Power IK, please check that you have the Visual Studio Prerequisites installed for Unreal Engine. Missing dll errors (VCRUNTIME140_1.dll for example) are usually resolved by installing the 
+<a href="https://www.microsoft.com/en-ca/download/details.aspx?id=48145">Visual C++ Runtime</a>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<p>To use Power IK, you need a Skeletal Mesh and an Animation Blueprint. </p>
+<p>This tutorial uses the Dino included in the Demo project.</p>
+<ol>
+<li>
+<p>Right-click in the <em>Content Browser</em> to create an <em>Animation Blueprint</em>. Associate it with the Dino skeleton and name it <em>ABP_Dino_Tutorial</em>.<br />
+<img alt="Create ABP" src="../img/quick_start/create_abp.png" /></p>
+</li>
+<li>
+<p>Open the AnimGraph, right-click and create a Power IK Solver node.<br />
+<img alt="Create Solver" src="../img/quick_start/create_solver.png" /></p>
+</li>
+<li>
+<p>Set the Character Root to the top joint in your creature. Usually “hips” or “pelvis”. For the Dino we use “pelvis”. This is not usually the absolute root of the Skeleton, but the top node in the creature’s anatomy (the one that translates).<br />
+<img alt="Solver Node" src="../img/quick_start/solver_node.png" /></p>
+</li>
+<li>
+<p>Select the Power IK Solver node and in the details panel, click the “+” icon twice to make two Effectors.<br />
+<img alt="Add Effectors" src="../img/quick_start/add_effectors.png" /></p>
+</li>
+<li>
+<p>Right-click on the node and select Refresh Nodes to see the input pins for the Solver effectors.
+<img alt="Refresh Node" src="../img/quick_start/refresh_node.png" /></p>
+</li>
+<li>
+<p>Click and drag one of the effector pins and select Make PowerIKEffector. Repeat for the second effector pin.<br />
+<img alt="Make Effector" src="../img/quick_start/make_effector.png" /></p>
+</li>
+<li>
+<p>Set the Bone Name field to the bone you want to touch the effector. For the Dino, we will grab both his feet: “heel_l” and “heel_r”.<br />
+<img alt="Name Effectors" src="../img/quick_start/name_effectors.png" /></p>
+</li>
+<li>
+<p>Connect the solver output to the Output Pose.<br />
+<img alt="Connect Output" src="../img/quick_start/connect_output.png" /></p>
+</li>
+<li>
+<p>Compile the anim blueprint. Then select the Power IK Solver node and observe in the viewport that both feet have yellow diamonds on them. These are the effectors.<br />
+<img alt="Effector Debug" src="../img/quick_start/effector_diamonds.png" /></p>
+</li>
+<li>
+<p>Open the “heel_l” Effector node and set the translation to 0, 0, 50. Then compile and observe new Effector location in the viewport:<br />
+<img alt="Move Effectors" src="../img/quick_start/move_effector.png" /></p>
+</li>
+<li>
+<p>Drag the Skeletal Mesh asset into a level. In the details panel, set the Anim Class to the animation blueprint asset we just created:<br />
+<img alt="Assign ABP" src="../img/quick_start/anim_class.png" /></p>
+</li>
+<li>
+<p>Now click Play. Observe that the left foot is reaching up, while the right foot remains planted on the ground. The pelvis, being free of any effectors, will automatically translate and rotate to help the feet reach the targets.<br />
+<img alt="All done" src="../img/quick_start/all_done.png" /></p>
+</li>
+</ol>
+<p>Congratulations! Power IK is now setup and working. </p>
+<p>From here, you are ready to drive the positions and rotations of the effectors through blueprint. These transforms can come from any source. Sophisticated procedural animation systems can be built ontop of Power IK.</p>
+<p>For testing/debug purposes, you can create a PowerIK Interactive Rig which allows you to interactively pull your effector positions with the mouse.</p>
+<p><img alt="Interactive Dino" src="../img/quick_start/interact_dino.gif" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../solver_setup/" class="btn btn-neutral float-right" title="Solver Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../solver_setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

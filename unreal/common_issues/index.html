@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Common Issues - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Common Issues";
+    var mkdocs_page_input_path = "unreal\\common_issues.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Common Issues</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#report-bugs">Report Bugs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#i-dont-see-any-effect-on-my-skeleton">“I don’t see any effect on my skeleton.”</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#my-character-disappears-after-adding-power-ik">“My character disappears after adding Power IK.”</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#my-limbs-are-bending-in-the-wrong-direction">“My limbs are bending in the wrong direction.”</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Common Issues</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="common-issues">Common Issues</h1>
+<h2 id="report-bugs">Report Bugs</h2>
+<p>For the fastest response, including community help, please post your issue in the <a href="https://discord.gg/VHhXTTj">official Power IK discord channel</a>.</p>
+<p>If you are having trouble using Power IK, or you encounter issues or bugs, please send a detailed account of the issue to: <a href="mailto:support@poweranimated.com">support@poweranimated.com</a>.</p>
+<p>We will do our best to make sure Power IK is working for you.</p>
+<h2 id="i-dont-see-any-effect-on-my-skeleton">“I don’t see any effect on my skeleton.”</h2>
+<p>There may be several reasons for this:</p>
+<ul>
+<li>Check the Output Log for warnings. It could be that the Solver node was not able to find the Character Root, Ground Plane Bone or one of the Effector bones.</li>
+<li>Check that you have the correct animation blueprint running on your actor.</li>
+<li>Check that the Power IK Solver has it’s input and output poses plugged in.</li>
+<li>Check that you are actually telling the effectors to move. By default they are set to <em>Relative to Input Pose</em> with a translation and rotation of zero. This has no effect on your skeleton!</li>
+</ul>
+<h2 id="my-character-disappears-after-adding-power-ik">“My character disappears after adding Power IK.”</h2>
+<p>When using World Space effectors, it’s possible to pull your character very far away from their capsule. Check the values going into the translation channel of the effectors and make sure you aren’t yanking the character back to the origin or to some far off place in space.</p>
+<p>Also you make need to put a small delay after Spawn (0.2 seconds) to allow time for your animation systems initialize. If Power IK recieves world space values of zero, it can throw the model back to the world origin, which can cause the LOD system to cull the actor.</p>
+<h2 id="my-limbs-are-bending-in-the-wrong-direction">“My limbs are bending in the wrong direction.”</h2>
+<p>Power IK needs a hint of what direction to bend in. If you supply a perfectly straight input pose it may choose a bending angle which “breaks” your character.</p>
+<p>You have two options to fix this:</p>
+<ol>
+<li>Supply an input pose that has at least some bend in it. </li>
+<li>Specify a custom Bend Direction</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../procedural_anim/" class="btn btn-neutral float-right" title="Procedural Animation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../packaging/" class="btn btn-neutral" title="Packaging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../packaging/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../procedural_anim/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

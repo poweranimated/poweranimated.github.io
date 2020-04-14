@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Procedural Animation - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Procedural Animation";
+    var mkdocs_page_input_path = "unreal\\procedural_anim.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Procedural Animation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-procedural-animation">What is Procedural Animation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#actor-setup">Actor Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#animation-blueprint-setup">Animation Blueprint Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tune-the-walking-behavior">Tune the Walking Behavior</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get-creative">Get Creative!</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Procedural Animation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="bonus-procedural-animation-blueprint">Bonus Procedural Animation Blueprint</h1>
+<p>Power IK is a generic tool that can be used for a multitude of purposes. We included a bonus set of blueprints to get you started generating procedural animation with Power IK.</p>
+<h2 id="what-is-procedural-animation">What is Procedural Animation</h2>
+<p>Procedural animation simply means, “anything that isn’t pre-recorded keyframes”. This includes physics, IK and direct bone manipulation. Often these methods are mixed with keyframe animation to achieve dynamic and compelling behaviors that would otherwise be impossible using keyframes alone.</p>
+<p><img alt="Procedural Animation" src="../img/proc_anim/proc_anim.gif" /></p>
+<p>Procedural animation is gaining in popularity and it greatly benefits from a full body IK solver.</p>
+<p>Typical methods attempt to algorithmically generate foot positions, or some high-level goal for the animation, and let IK and physics create the final pose. Using a regular single-chain IK solver, it is difficult to get the full pose to look realistic. Limbs can feel disconnected from each other and the rest of the body (because they are). </p>
+<p>That’s where a full-body solver like Power IK can help you achieve more natural poses with less effort. With Power IK, you can set foot positions procedurally, and let the solver create a natural pose for the rest of the body.</p>
+<h2 id="actor-setup">Actor Setup</h2>
+<p>Inside Content/Bonus_ProceduralAnim you will find two blueprints, BP_Leg and BP_LegManager. </p>
+<p>These blueprints exist solely to generate foot positions which are then fed into Power IK.</p>
+<p>Add the Legs and Leg Manager to an actor:</p>
+<ol>
+<li>Add a BP_LegManager actor component to an actor.</li>
+<li>Add a BP_Leg for each leg of the actor. Position the scene component in the viewport at the location of the hips.<br />
+<img alt="Add Components" src="../img/proc_anim/add_components.png" /></li>
+<li>Orient the BP_Leg scene component in the actor Viewport so that +X points in the direction you want to ray-cast for foot positions.<br />
+<img alt="Orient Legs" src="../img/proc_anim/orient_legs.png" /></li>
+<li>Set a tag on each BP_Leg component so you can identify it later.</li>
+</ol>
+<h2 id="animation-blueprint-setup">Animation Blueprint Setup</h2>
+<p>Now you need to get the foot positions from the BP_Leg components and feed them into Power IK in the animation graph.</p>
+<p>Get references to the actor components in the animation blueprint:</p>
+<ol>
+<li>
+<p>Create 3 variables in the animation blueprint. One BP_LegManager object reference, and two BP_Leg references (or however many legs you have).<br />
+<img alt="Vars" src="../img/proc_anim/variables.png" /></p>
+</li>
+<li>
+<p>On Begin Play, we need to get a reference to the Leg Manager component and store it.
+And do the same for the legs using the included Get Leg Reference function and the tag names that you added to each BP_Leg component.<br />
+<img alt="Vars" src="../img/proc_anim/get_comps.png" /></p>
+</li>
+<li>
+<p>Add two vector-type variables to store the foot positions, and get them from the legs using the Blueprint Update Animation event.
+<img alt="Vars" src="../img/proc_anim/get_legs.png" /></p>
+</li>
+<li>
+<p>Drag these foot position vectors into the animation graph and connect them to the Position of a PowerIK Effector. Set the effector space to World Space. And plug it into a solver.
+<img alt="Vars" src="../img/proc_anim/foot_positions.png" /></p>
+</li>
+</ol>
+<p><img alt="Solver Setup" src="../img/proc_anim/solver_setup.png" /></p>
+<p>You will of course need your character capsule to actually move if you hope to see the legs walking. The included project has a sample of a random patrol behavior tree which is enough to test procedural walking.</p>
+<p>See the Dino_Walking sample blueprints for detailed comments on what exactly the BP_Leg and BP_LegManager are doing to generate foot positions procedurally.</p>
+<h2 id="tune-the-walking-behavior">Tune the Walking Behavior</h2>
+<p>Different sized characters will take larger or smaller steps at different speeds. Or you may want to even modulate a characters walking behavior depending on their state. Each BP_Leg has a Walking Leg settings category with options for adjusting all aspects of the gait behavior:</p>
+<ul>
+<li><strong>Ray Cast Length</strong>: the distance from the BP_Leg scene component that the system will ray-cast to look for a target foot position. Increase this for larger characters to ensure they can reach the ground.</li>
+<li><strong>Step Height</strong>: the maximum height in centimeters the foot is raised off the ground mid-stride.</li>
+<li><strong>Step Time</strong>: the time in seconds it takes to make a step (from unplanting to replanting).</li>
+<li><strong>Step Distance</strong>: the distance in centimeters to step between unplanting and replanting.</li>
+</ul>
+<p><img alt="Curves" src="../img/proc_anim/curves.png" /></p>
+<p>The <em>Replant Speed Curve</em> and <em>Replant Height Curves</em> can be modified to adjust the ease-in and ease-out of the foot position and height. The curve ranges are normalized from  0 to 1 which represents the time for a complete step (unplant to replant).</p>
+<h2 id="get-creative">Get Creative!</h2>
+<p>The procedural walking blueprints are just a small sample of what’s possible with procedural animation when combined with a full-body IK solver like Power IK.</p>
+<ol>
+<li><strong>Add More Legs</strong>: You could extend the BP_LegManager to support multiple sets of legs, where each set of legs is synchronized. This would open it up to support insects and arachnid gaits.</li>
+<li><strong>Support Running</strong>: You could add support for procedural running by creating a mode that allows feet to unplant at the same time, within ‘tolerance’ ranges.</li>
+<li><strong>Layer on Physics and Animation</strong>: Layer your procedural walking with procedural look-ats, secondary physics and keyframe animation to add believability and style.</li>
+<li><strong>More Procedural Actions</strong>: You could add procedural turn on spot, jumping and even attacks. Power IK unleashes a lot of possibilities for creative expression with Unreal blueprint.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../sdk/getting_started_sdk/" class="btn btn-neutral float-right" title="Getting Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../common_issues/" class="btn btn-neutral" title="Common Issues"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../common_issues/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../sdk/getting_started_sdk/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

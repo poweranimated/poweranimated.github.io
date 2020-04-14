@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Solver Setup - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Solver Setup";
+    var mkdocs_page_input_path = "unreal\\solver_setup.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Solver</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Solver Setup</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-power-ik-solver">What Is a Power IK Solver?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-solver-setup">Basic Solver Setup</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#note-on-blueprint-preview-window">Note on Blueprint Preview Window</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Solver &raquo;</li>
+        
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Solver Setup</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="power-ik-solver-node">Power IK Solver Node</h1>
+<h2 id="what-is-a-power-ik-solver">What Is a Power IK Solver?</h2>
+<p>The core of the plugin is the Power IK solver Animation Graph node. </p>
+<p>It takes an <strong>input pose</strong> and a <strong>list of effectors</strong>. The effectors come with target transforms corresponding to joints in the skeleton.</p>
+<p>Translating or rotating an effector pulls the affected joint, with its surrounding skeleton, towards the effector transform. The solver calculates the pose to reach the affected bones towards the new set of locations.</p>
+<p><img alt="Solver Node" src="../img/solver_node/make_effectors.gif" /></p>
+<h2 id="basic-solver-setup">Basic Solver Setup</h2>
+<ol>
+<li>
+<p>Right-click in your animation graph and create a Power IK Solver node.<br />
+<img alt="Make Solver" src="../img/solver_node/make_solver.png" /></p>
+</li>
+<li>
+<p>Set the name of the Character Root and Ground Plane Bone. See the Bone Name Settings for explanations of these fields.<br />
+<img alt="Set Roots" src="../img/solver_node/solver_node.png" /></p>
+</li>
+<li>
+<p>In the details panel, click the “+” icon to add as many effectors as you need.<br />
+<img alt="Add Effectors" src="../img/solver_node/add_effectors.png" /></p>
+</li>
+<li>
+<p>Right-click on the Power IK Solver and click Refresh Node to make the effector pins visible in the graph.<br />
+<img alt="Refresh Node" src="../img/solver_node/refresh_node.png" /></p>
+</li>
+<li>
+<p>Drag off the pins to create Power IK Effector nodes. Set the Bone name of the effectors. Typically these are foot joints, but they can be any bone in the body.<br />
+<img alt="Make Effectors" src="../img/solver_node/make_effectors.png" /></p>
+</li>
+<li>
+<p>Connect the input pose and the output pose to the solver node.<br />
+<img alt="Connect Solver" src="../img/solver_node/connect_inputs.png" /></p>
+</li>
+<li>
+<p>Compile the animation blueprint. Select the solver node. If everything is setup correctly, you should see yellow diamonds where your effectors are located.<br />
+<img alt="Yellow Diamonds" src="../img/solver_node/yellow_diamonds.png" /></p>
+</li>
+</ol>
+<p>From here you are ready to drive the effector positions and rotations to pull the skeleton as desired. See the section on <a href="/unreal/effectors">Power IK Effectors</a> for more info.</p>
+<h3 id="note-on-blueprint-preview-window">Note on Blueprint Preview Window</h3>
+<p>The Power IK solver node will not affect your skeleton in the animation blueprint preview window. Typically, the effector inputs require runtime information. So the solver evaluates only while playing in editor, or in a final build.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../solver_bones/" class="btn btn-neutral float-right" title="Solver Bones">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../getting_started_unreal/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../getting_started_unreal/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../solver_bones/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

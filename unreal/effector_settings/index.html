@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Effector Settings - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Effector Settings";
+    var mkdocs_page_input_path = "unreal\\effector_settings.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Effectors</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Effector Settings</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-power-ik-effector">What is a Power IK Effector?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bone-name">Bone Name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#position-and-rotation-space">Position and Rotation Space</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pull-weight">Pull Weight</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#normalize-pulling">Normalize Pulling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#positivenegative-pull-factors">Positive/Negative Pull Factors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rotate-bone">Rotate Bone</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rotate-limb">Rotate Limb</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alpha">Alpha</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Effectors &raquo;</li>
+        
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Effector Settings</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="effectors">Effectors</h1>
+<h2 id="what-is-a-power-ik-effector">What is a Power IK Effector?</h2>
+<p>Effectors are how you tell the solver what bone of the skeleton you want to pull, and where you want it to go. <strong>Each effector is associated with a single bone</strong> in the skeleton and supplies a position and rotation for that bone to reach towards.</p>
+<p><img alt="Effector" src="../img/effectors/effector.png" /></p>
+<p>If you only add 1 effector, it will pull your entire skeleton as though your skeleton were parented to it. Once you have multiple effectors, the solver is able to do interesting work by creating a pose that reaches both effectors simultaneously.</p>
+<p>For example, by adding an effector to both feet of an ogre, you can pull 1 foot upwards while leaving the other foot on the ground. The hips of the ogre will translate and rotate to help the overall skeleton reach this desired goal.</p>
+<h2 id="bone-name">Bone Name</h2>
+<p>This is the name of the bone you want this effector to affect. The name in this field must match the name in the skeleton precisely. </p>
+<p>Bones cannot be affected by more than 1 effector.</p>
+<h2 id="position-and-rotation-space">Position and Rotation Space</h2>
+<p>The Position (Vector) and Rotation (Rotator) inputs are both considered to be in 1 of three spaces:</p>
+<ol>
+<li><strong>Relative to Input Pose</strong>: interprets inputs as offsets relative to the affected bone in the pose that is passed as input. This is the default space.</li>
+<li><strong>World Space</strong>: interprets inputs as world space.</li>
+<li><strong>Component Space</strong>: interprets inputs as being relative to the root of the Skeletal Mesh.</li>
+</ol>
+<p><img alt="Space" src="../img/effectors/space.png" /></p>
+<p>By default, the space of the effector is <em>Relative to Input Pose</em> with zero position and rotation values. This is essentially telling the solver to not modify the input pose (ie do nothing).</p>
+<p>All three spaces are useful in different scenarios. But the most common is <em>Relative to Input Pose</em>. This can be used to nudge the skeleton from it’s animated position. For example, by taking a walking animation and pulling the feel outwards and the hips down you can turn a walk into a crouch-walk.</p>
+<h2 id="pull-weight">Pull Weight</h2>
+<p>The Pull Weight of an effector determines how much influence the effector has over the whole body <em>relative to other effectors</em>. </p>
+<p>If all the Pull Weight values are the same, they all have the same relative influence on the skeleton. This is regardless of their absolute values. </p>
+<p>In cases where you want simple reaching behavior, leaving all the Pull Weights set to 1.0 will split the influence of the effectors evenly.</p>
+<p>Power IK weights the unaffected parts of the skeleton based on distance (along the skeleton) to your effectors. So you should get decent influence distribution by default. </p>
+<p>Adjusting Pull Weights is sometimes necessary in situations where you need one part of the body to dominate the pose. For example, to setup a 3-point VR tracking solver, you would want 100% of the weight on the head tracker and zero on the hands. This will cause the hands to not push the torso around and instead have the hips and torso follow the head.</p>
+<h2 id="normalize-pulling">Normalize Pulling</h2>
+<p>This checkbox is on by default. When on, you can grab all the effectors of a Power IK rig and move them in world space and the rig will follow the effectors precisely; not over or under shooting. The influence of the effectors on the bones is 'normalized'.</p>
+<p>But in some cases you do not want the influence of the effectors to act in this manner. You may want to control the influence more precisely by setting "Normalize Pulling" off. Now the effector will pull on the body proportional to the Pull Weight multiplied by the inverse distance to the body part.</p>
+<p>This is especially useful in conjuction with Positive and Negative Pull Factors.</p>
+<h2 id="positivenegative-pull-factors">Positive/Negative Pull Factors</h2>
+<p>The Positive and Negative Pull Factors give you two 3d vectors to allow scaling the influence of an effector along all three axes in both the positive and negative directions.</p>
+<p>Negative Pull Factors were used in the "Prone Mannequin" example to allow the mannequin to prefer reaching when tilted downwards, and lie flat when tilted upwards. This non-linear behavior is achieved by giving the hands a low negative pull factor in the Z direction (up/down). So the influence they have on the body is greater in the positive Z direction and less in the negative Z.</p>
+<h2 id="rotate-bone">Rotate Bone</h2>
+<p>Rotate Bone is checked off by default. When off, the bone will simply inherit the rotation of it's parent. When on, the bone matches the rotation of the effector.</p>
+<p>Both are useful depending on the situation.</p>
+<h2 id="rotate-limb">Rotate Limb</h2>
+<p>Rotate Limb is off by default. When on, the effector rotation will be smoothly distributed up the limb. This is useful for spines and look-at behaviors. </p>
+<p>Rotate Limb is demonstrated on the hanging snake demo in the Unreal examples project.</p>
+<h2 id="alpha">Alpha</h2>
+<p>This value ranges from 0 to 1 and set to 1 by default. The Alpha value blends the influence of this effector on/off.</p>
+<p>This can be easier than blending the target transforms. For example, if you want to animate a character opening a door and set the effector position to the door knob, you can leave the effector position at the door knob and blend the alpha value on and off for the duration of the reach animation. This is easier than blending the target position.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../effector_smoothing/" class="btn btn-neutral float-right" title="Effector Smoothing">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../solver_performance/" class="btn btn-neutral" title="Solver Performance"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../solver_performance/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../effector_smoothing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

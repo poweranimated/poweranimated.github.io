@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Effector Smoothing - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Effector Smoothing";
+    var mkdocs_page_input_path = "unreal\\effector_smoothing.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Effectors</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Effector Smoothing</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#smoothing-settings">Smoothing Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#global-smoothing">Global Smoothing</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Effectors &raquo;</li>
+        
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Effector Smoothing</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="effector-smoothing">Effector Smoothing</h1>
+<p>Power IK comes with built-in temporal smoothing to help reduce pops and jitters in fast moving effector inputs. You can apply your own smoothing to the inputs to Power IK effectors, but the built-in smoothing has some advantages:</p>
+<ul>
+<li>does not introduce non-linear accelerations where there are non in the input</li>
+<li>clamps positions and rotations to within a threshold distance / angle</li>
+</ul>
+<p>To enable Effector Smoothing:</p>
+<ol>
+<li>Select an Effector node in the Animation Graph</li>
+<li>Drag off the <em>Smoothing</em> pin to create a PowerIKSmoothing struct</li>
+<li>Toggle the settings as desired.</li>
+</ol>
+<h2 id="smoothing-settings">Smoothing Settings</h2>
+<p><img alt="Smoothing" src="../img/effectors/smoothing.png" /></p>
+<ol>
+<li><strong>Smooth Position Over Time</strong>: bool, if True the position of the effector will be smoothed over time.</li>
+<li><strong>Max Position Speed</strong>: this is the maximum speed, in centimeters per second, that the effector is allowed to move. If an input is provided that moves the effector faster than this speed, it will be clamped.</li>
+<li><strong>Max Position Distance</strong>: this is the maximum distance, in centimeters, that the effector will be allowed to lag behind the input position. This limits the error that can be introduced from position smoothing.</li>
+</ol>
+<p>And similarly for smoothing rotations:</p>
+<ol>
+<li><strong>Smooth Rotation Over Time</strong>: bool, if True the rotation of the effector will be smoothed over time.</li>
+<li><strong>Max Degrees Speed</strong>: this is the maximum speed, in degrees per second, that the effector is allowed to rotate. If an input is provided that rotates the effector faster than this speed, it will be clamped.</li>
+<li><strong>Max Degrees Distance</strong>: this is the maximum angle, in degrees, that the effector will be allowed to lag behind the input rotation. This limits the error that can be introduced from rotation smoothing.</li>
+</ol>
+<h2 id="global-smoothing">Global Smoothing</h2>
+<p>You can globally adjust all the smoothing settings on the solver node itself.</p>
+<p>The <em>Smoothing Max Speed Multiplier</em> and <em>Smoothing Max Distance Multiplier</em> are set to 1.0 by default. These values are multplied by the Effector settings to arrive at the final smoothing value. </p>
+<p><img alt="Global" src="../img/effectors/global_smoothing.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../grounding/" class="btn btn-neutral float-right" title="Grounding">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../effector_settings/" class="btn btn-neutral" title="Effector Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../effector_settings/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../grounding/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

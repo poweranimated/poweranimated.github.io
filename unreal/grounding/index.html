@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Grounding - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Grounding";
+    var mkdocs_page_input_path = "unreal\\grounding.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Grounding</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Grounding</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="grounding">Grounding</h1>
+<p>Power IK comes with built in grounding ability to contour your creatures to uneven terrain. </p>
+<p><strong>Note: This feature is in active development.</strong> Procedural leaning and stride adjustment will be available in a future release. The current version is great for creatures with 4 or more limbs, but you will not get proper heel placement in bipeds.</p>
+<p><img alt="Ground" src="../img/ground/spider.gif" /></p>
+<h1 id="how-it-works">How it Works</h1>
+<p>Effector's have an IsGrounded flag that causes Power IK to stick the effector to the ground. This is useful for animating feet on uneven terrain.</p>
+<p>It helps to understand the basic algorithm for ground alignment:</p>
+<pre><code>For each effector that “Is Grounded”:
+    Calculate effector location in world space
+    Cast a ray from this location
+    If ray hits collider:
+Smoothly move the effector towards hit point
+Run solver using new effector locations
+</code></pre>
+
+<p>As you can see, because it is based on raycasts, you have to make sure that your collision filtering and level collision is setup to support good ground IK.</p>
+<h2 id="how-to-setup-grounding">How to Setup Grounding</h2>
+<ol>
+<li>Create a <em>Power IK Solver</em> node with one effector for each “foot” to be grounded.</li>
+<li>Set <em>Bone Name</em> to the name of the foot bone.</li>
+<li>Leave <em>Space</em> to <em>Relative to Input Pose</em> if you want the normal animation to play over the ground.</li>
+<li>Leave <em>Position</em> and <em>Rotation</em> at zero.</li>
+<li>Check <em>IsGrounded</em> on.</li>
+<li>Compile and Play.</li>
+</ol>
+<p><strong>Note:</strong> You will likely want to utilize <a href="../effector_smoothing">Effector Smoothing</a> when using IsGrounded. Otherwise legs can seemingly "pop" instantly ontop of obstacles.</p>
+<h2 id="grounding-settings">Grounding Settings</h2>
+<p><img alt="Solver Node" src="../img/solver_node/ground_settings.png" /></p>
+<p>All the Grounding settings are found by selecting the solver node and opening the details panel:</p>
+<ul>
+<li><strong>Ground Plane Bone</strong>: the name of the bone that represents the “ground plane” in your animation. Typically this is just the root bone, but you can use a separate bone if you want. The height of the effector relative to this plane is always maintained. So if the animation pulls the characters foot 10cm above the ground plane, then the foot will be 10cm above the ray cast hit location.</li>
+<li><strong>Collision Channel</strong>: this is the level collision channel that the rays are collided against. Make sure that the level is setup with collision on this channel for the character to collide with.</li>
+<li><strong>Trace Complex:</strong> whether to trace against Complex or Simple collision geometry. Complex is usually preferred, though slightly more expensive.</li>
+<li><strong>Ray Cast Up</strong>: the distance in centimeters to cast upwards looking for terrain to stand on.</li>
+<li><strong>Ray Cast Down</strong>: the distance in centimeters to cast downwards looking for terrain to stand on.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../interactive_rig/" class="btn btn-neutral float-right" title="Interactive Rig">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../effector_smoothing/" class="btn btn-neutral" title="Effector Smoothing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../effector_smoothing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../interactive_rig/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
