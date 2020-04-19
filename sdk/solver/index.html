@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Solver Class - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Solver Class";
+    var mkdocs_page_input_path = "sdk\\solver.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/root_rotation/">Root Rotation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/center_of_gravity/">Center of Gravity</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_sdk/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Solver Class</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#class-powerik_lib_api-solver">class POWERIK_LIB_API Solver</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solver">Solver()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-solveconst-float-deltatime-const-float-alpha">void Solve(const float DeltaTime, const float Alpha)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-reset">void Reset()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setnumbonesint-numbones">void SetNumBones(int NumBones)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#int-getnumbones">int GetNumBones()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-addbone-const-int-index-const-char-bonename-const-int-parentindex">void AddBone(   const int Index,   const char* BoneName,   const int ParentIndex)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#int-addeffectorconst-char-bonename">int AddEffector(const char* BoneName)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setrootboneconst-int-boneindex">void SetRootBone(const int BoneIndex)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#const-char-getrootbonename">const char* GetRootBoneName()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setsolversettingsconst-solversettingsamp-settings">void SetSolverSettings(const SolverSettings&amp;amp; Settings)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setcogsettingsconst-centerofgravitysettingsamp-settings">void SetCOGSettings(const CenterOfGravitySettings&amp;amp; Settings)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setgroundsettingsconst-groundsettingsamp-settings">void SetGroundSettings(const GroundSettings&amp;amp; Settings)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setbonetransform-const-int-index-const-vec3amp-position-const-quatamp-rotation">void SetBoneTransform(   const int Index,   const Vec3&amp;amp; Position,   const Quat&amp;amp; Rotation)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-getbonetransform-const-int-index-vec3amp-outposition-quatamp-outrotation">void GetBoneTransform(   const int Index,   Vec3&amp;amp; OutPosition,   Quat&amp;amp; OutRotation)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectortransform-const-int-index-const-vec3amp-position-const-quatamp-rotation-const-bool-isadditive-const-bool-rotatebone-const-bool-rotatelimb">void SetEffectorTransform(   const int Index,   const Vec3&amp;amp; Position,   const Quat&amp;amp; Rotation,   const bool IsAdditive,   const bool RotateBone,   const bool RotateLimb)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectorweights-const-int-index-const-float-alpha-const-float-pullweight-const-bool-normalizepulling-const-vec3amp-positivepullfactor-const-vec3amp-negativepullfactor">void SetEffectorWeights(   const int Index,   const float Alpha,   const float PullWeight,   const bool NormalizePulling,   const Vec3&amp;amp; PositivePullFactor,   const Vec3&amp;amp; NegativePullFactor)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectorsettings-const-int-index-const-bool-isgrounded-const-bool-affectscenterofgravity">void SetEffectorSettings(   const int Index,   const bool IsGrounded,   const bool AffectsCenterOfGravity)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectorsmoothing-const-int-index-const-effectorsmoothingsettingsamp-settings">void SetEffectorSmoothing(   const int Index,   const EffectorSmoothingSettings&amp;amp; Settings)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setbonebenddirection-const-int-index-const-vec3amp-direction">void SetBoneBendDirection(   const int Index,   const Vec3&amp;amp; Direction)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#void-setbonelimits-const-int-index-const-float-stiffness-const-bool-uselimits-const-vec3amp-minangles-const-vec3amp-maxangles-const-bool-negatexaxis">void SetBoneLimits(   const int Index,   const float Stiffness,   const bool UseLimits,   const Vec3&amp;amp; MinAngles,   const Vec3&amp;amp; MaxAngles,   const bool NegateXAxis)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bool-getbonelimits-const-int-index-vec3amp-outminlimits-vec3amp-outmaxlimits-boolamp-outnegatexaxis">bool GetBoneLimits(   const int Index,   Vec3&amp;amp; OutMinLimits,   Vec3&amp;amp; OutMaxLimits,   bool&amp;amp; OutNegateXAxis)</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Settings</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_solver/">Solver Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_ground/">Ground Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_cog/">Center of Gravity Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_smoothing/">Effector Smoothing Settings</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>C++ SDK &raquo;</li>
+        
+      
+    
+    <li>Solver Class</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="poweriksolver-class">PowerIK::Solver Class</h1>
+<h2 id="class-powerik_lib_api-solver"><code>class POWERIK_LIB_API Solver</code></h2>
+<p>The core solver class for PowerIK.</p>
+<h2 id="solver"><code>Solver()</code></h2>
+<p>Creates a new instance of a PowerIK solver. Do this once per animated skeleton.</p>
+<h2 id="void-solveconst-float-deltatime-const-float-alpha"><code>void Solve(const float DeltaTime, const float Alpha)</code></h2>
+<p>Call this every tick to generate a new pose based on the input pose and the effectors.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>DeltaTime</code> — - the time (in seconds since the last call to Solve(). PowerIK is deterministic, this is only needed for effector smoothing.</li>
+<li><code>Alpha</code> — - blend the entire effect of the solver off and on (0-1). At 0, the solve is skipped entirely and the input pose is completely unchanged.</li>
+</ul>
+<h2 id="void-reset"><code>void Reset()</code></h2>
+<p>Call this to reset all internal data structures. Will not deallocate. Useful for recycling solver memory.</p>
+<h2 id="void-setnumbonesint-numbones"><code>void SetNumBones(int NumBones)</code></h2>
+<p>Call this on a new Solver() or only AFTER calling Reset() to expand/allocate space for a new skeleton.</p>
+<h2 id="int-getnumbones"><code>int GetNumBones()</code></h2>
+<p>Get how many bones have been added to the Solver.</p>
+<h2 id="void-addbone-const-int-index-const-char-bonename-const-int-parentindex"><code>void AddBone(   const int Index,   const char* BoneName,   const int ParentIndex)</code></h2>
+<p>Call this for each bone AFTER calling SetNumBones(). Supplies hierarchy information to solver.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
+<li><code>BoneName</code> — - the string name of the Bone. This name must match the name passed to AddEffector()</li>
+<li><code>ParentIndex</code> — - the index of the bone this bone is parented to or -1 for the root (no parent).</li>
+</ul>
+<h2 id="int-addeffectorconst-char-bonename"><code>int AddEffector(const char* BoneName)</code></h2>
+<p>Call this AFTER called AddBone() for the whole skeleton. Adds an effector to a given bone (by name).</p>
+<ul>
+<li><strong>Parameters:</strong> <code>BoneName</code> — - the string name of the Bone to affect. This name must match the name passed to AddBone().</li>
+<li><strong>Returns:</strong> - the index of the newly created effector. Store this and use it in SetEffectorTransform()</li>
+</ul>
+<h2 id="void-setrootboneconst-int-boneindex"><code>void SetRootBone(const int BoneIndex)</code></h2>
+<p>Tell the solver what the root bone is. All bones ABOVE the root are culled from the solver entirely.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>BoneIndex</code> — - all of the ground settings</li>
+</ul>
+<h2 id="const-char-getrootbonename"><code>const char* GetRootBoneName()</code></h2>
+<p>Get name of the currently set root bone.</p>
+<ul>
+<li><strong>Returns:</strong> - a pointer to array of char holding the name of the root bone. Returns empty string if no root has been set.</li>
+</ul>
+<h2 id="void-setsolversettingsconst-solversettingsamp-settings"><code>void SetSolverSettings(const SolverSettings&amp; Settings)</code></h2>
+<p>Optional method to modify internal solver settings like iteration counts.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>Settings</code> — - all the solver settings</li>
+</ul>
+<h2 id="void-setcogsettingsconst-centerofgravitysettingsamp-settings"><code>void SetCOGSettings(const CenterOfGravitySettings&amp; Settings)</code></h2>
+<p>Optional method to setup Center of Gravity constraint on root bone.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>Settings</code> — - all of the center of gravity settings</li>
+</ul>
+<h2 id="void-setgroundsettingsconst-groundsettingsamp-settings"><code>void SetGroundSettings(const GroundSettings&amp; Settings)</code></h2>
+<p>Optional method to setup Ground settings. Only used if IsGrounded is True on an Effector.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>Settings</code> — - all of the ground settings</li>
+</ul>
+<h2 id="void-setbonetransform-const-int-index-const-vec3amp-position-const-quatamp-rotation"><code>void SetBoneTransform(   const int Index,   const Vec3&amp; Position,   const Quat&amp; Rotation)</code></h2>
+<p>Call this every tick, for each bone, before Solve() to update the input pose.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
+<li><code>Position</code> — - the Character Space 3d position of the bone</li>
+<li><code>Rotation</code> — - the Character Space rotation of the bone as a quaternion</li>
+</ul>
+<h2 id="void-getbonetransform-const-int-index-vec3amp-outposition-quatamp-outrotation"><code>void GetBoneTransform(   const int Index,   Vec3&amp; OutPosition,   Quat&amp; OutRotation)</code></h2>
+<p>Call this every tick, for each bone, AFTER Solve() to get the generated output pose.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
+<li><code>Position</code> — - the Character Space 3d position of the bone</li>
+<li><code>Rotation</code> — - the Character Space rotation of the bone as a quaternion</li>
+</ul>
+<h2 id="void-seteffectortransform-const-int-index-const-vec3amp-position-const-quatamp-rotation-const-bool-isadditive-const-bool-rotatebone-const-bool-rotatelimb"><code>void SetEffectorTransform(   const int Index,   const Vec3&amp; Position,   const Quat&amp; Rotation,   const bool IsAdditive,   const bool RotateBone,   const bool RotateLimb)</code></h2>
+<p>Optionally call this every tick, for each effector, before Solve() to update the effector transform settings.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>Position</code> — - the Character Space 3d position of the effector</li>
+<li><code>Rotation</code> — - the Character Space rotation of the effector as a quaternion</li>
+<li><code>IsAdditive</code> — - if True, Position and Rotation are considered relative to input pose of bone</li>
+<li><code>RotateBone</code> — - if True, affected Bone will rotate to match effector rotation</li>
+<li><code>RotateLimb</code> — - if True, Bones near this effector will be rotated with the effector</li>
+</ul>
+<h2 id="void-seteffectorweights-const-int-index-const-float-alpha-const-float-pullweight-const-bool-normalizepulling-const-vec3amp-positivepullfactor-const-vec3amp-negativepullfactor"><code>void SetEffectorWeights(   const int Index,   const float Alpha,   const float PullWeight,   const bool NormalizePulling,   const Vec3&amp; PositivePullFactor,   const Vec3&amp; NegativePullFactor)</code></h2>
+<p>Optionally call this every tick, for each effector, before Solve() to update the effector weight settings.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>Alpha</code> — - used to blend the effect of the effector on/off. Ranges from 0 to 1.</li>
+<li><code>PullWeight</code> — - determines the degree of effect this effector has on the rest of the body. Normalized relative to all other PullWeight values.</li>
+<li><code>NormalizePulling</code> — - if True, total PullWeight on body is normalized to 1 to avoid over/under shooting.</li>
+<li><code>PositivePullFactor</code> — - multiplies effect of this effector on the rest of the body in the positive directions</li>
+<li><code>NegativePullFactor</code> — - multiplies effect of this effector on the rest of the body in the negative directions</li>
+</ul>
+<h2 id="void-seteffectorsettings-const-int-index-const-bool-isgrounded-const-bool-affectscenterofgravity"><code>void SetEffectorSettings(   const int Index,   const bool IsGrounded,   const bool AffectsCenterOfGravity)</code></h2>
+<p>Optionally call this every tick, for each effector, before Solve() to update the effector weight settings.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>IsGrounded</code> — - multiplies effect of this effector on the rest of the body in the positive directions</li>
+<li><code>AffectsCenterOfGravity</code> — - multiplies effect of this effector on the rest of the body in the negative directions</li>
+</ul>
+<h2 id="void-seteffectorsmoothing-const-int-index-const-effectorsmoothingsettingsamp-settings"><code>void SetEffectorSmoothing(   const int Index,   const EffectorSmoothingSettings&amp; Settings)</code></h2>
+<p>Optionally call this to smooth an effector's position and/or rotation over time</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>Settings</code> — - the position and rotation smoothing settings</li>
+</ul>
+<h2 id="void-setbonebenddirection-const-int-index-const-vec3amp-direction"><code>void SetBoneBendDirection(   const int Index,   const Vec3&amp; Direction)</code></h2>
+<p>Optionally call this to specify a custom bending direction for a single bone</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the bone (as returned from AddBone)</li>
+<li><code>Direction</code> — - a 3d vector in the local space of the bone that is the direction the bone will move in when bending</li>
+</ul>
+<h2 id="void-setbonelimits-const-int-index-const-float-stiffness-const-bool-uselimits-const-vec3amp-minangles-const-vec3amp-maxangles-const-bool-negatexaxis"><code>void SetBoneLimits(   const int Index,   const float Stiffness,   const bool UseLimits,   const Vec3&amp; MinAngles,   const Vec3&amp; MaxAngles,   const bool NegateXAxis)</code></h2>
+<p>EXPERIMENTAL! Optionally call this to specify a set of limits and stiffness for a bone</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the bone (as returned from AddBone)</li>
+<li><code>Stiffness</code> — - ranges from 0 to 1. Default is 0. At 1 the bone is completely rigid and will be removed from the solve entirely.</li>
+<li><code>UseLimits</code> — - turn limits on/off.</li>
+<li><code>MinAngles</code> — - minimum allowable X, Y and Z rotations relative to parent</li>
+<li><code>MaxAngles</code> — - maximum allowable X, Y and Z rotations relative to parent</li>
+<li><code>NegateXAxis</code> — - consider limits in opposite direction along X-axis</li>
+</ul>
+<h2 id="bool-getbonelimits-const-int-index-vec3amp-outminlimits-vec3amp-outmaxlimits-boolamp-outnegatexaxis"><code>bool GetBoneLimits(   const int Index,   Vec3&amp; OutMinLimits,   Vec3&amp; OutMaxLimits,   bool&amp; OutNegateXAxis)</code></h2>
+<p>Optionally call this to get the limits for a bone. If the bone has no limits</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>Index</code> — - the index of the bone (as returned from AddBone)</li>
+<li><code>OutMinLimits</code> — - minimum allowable X, Y and Z rotations relative to parent</li>
+<li><code>OutMaxLimits</code> — - maximum allowable X, Y and Z rotations relative to parent</li>
+<li><code>OutNegateXAxis</code> — - consider limits in opposite direction along X-axis</li>
+<li><strong>Returns:</strong> - True if the bone has limits, false otherwise (all Out values will be untouched)</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../settings_solver/" class="btn btn-neutral float-right" title="Solver Settings">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../getting_started_sdk/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../getting_started_sdk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../settings_solver/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Getting Started - Power IK</title>
+  <title>Solver Settings - Power IK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Getting Started";
-    var mkdocs_page_input_path = "sdk\\getting_started_sdk.md";
+    var mkdocs_page_name = "Solver Settings";
+    var mkdocs_page_input_path = "sdk\\settings_solver.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -96,27 +96,25 @@
                 </ul>
                 <p class="caption"><span class="caption-text">C++ SDK</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#install-the-sdk">Install the SDK</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-overview">Update Overview</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-details">Update Details</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#shutdown-and-reset">Shutdown and Reset</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_sdk/">Getting Started</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../solver/">Solver Class</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Settings</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../settings_solver/">Solver Settings</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Settings</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Solver Settings</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#struct-powerik_lib_api-solversettings">struct POWERIK_LIB_API SolverSettings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unsigned-int-squashiterations">unsigned int SquashIterations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unsigned-int-stretchiterations">unsigned int StretchIterations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vec3-worldupnormal">Vec3 WorldUpNormal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-rootrotationmultiplier">float RootRotationMultiplier</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../settings_ground/">Ground Settings</a>
                 </li>
@@ -148,11 +146,15 @@
     
       
         
+          <li>Settings &raquo;</li>
+        
+      
+        
           <li>C++ SDK &raquo;</li>
         
       
     
-    <li>Getting Started</li>
+    <li>Solver Settings</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -163,69 +165,17 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="power-ik-c-sdk">Power IK C++ SDK</h1>
-<p>The Power IK C++ SDK allows you to integrate Power IK into any animation software that can link C++ and uses skeletal animation.</p>
-<p>This includes, but is not limited to:</p>
-<ul>
-<li>game engines</li>
-<li>VR training software</li>
-<li>content creation software</li>
-<li>industrial simulations</li>
-<li>robotics</li>
-</ul>
-<p>Power IK is commercially licensed priorietary software. To enquire about licensing our SDK, please contact support@poweranimated.com.</p>
-<h2 id="install-the-sdk">Install the SDK</h2>
-<ol>
-<li>Copy the entire SDK folder into a suitable location in your project directory.</li>
-<li>
-<p>Add sdk/include to your project's include directories and include:</p>
-<ul>
-<li>sdk/include/PowerIK.h</li>
-<li>sdk/include/PowerIKMath.h</li>
-<li>sdk/include/PowerIKSettings.h</li>
-</ul>
-</li>
-<li>
-<p>Add /sdk/lib/PowerIK.lib to your project linker's additional dependencies.</p>
-</li>
-<li>Then include PowerIK.h into the source file where you intend to integrate PowerIK.</li>
-</ol>
-<p><strong>Note:</strong>: For dynamically linked binary distributions make sure that sdk/lib/Win64/POWERIK.dll is copied into your packaged build directory and is accessible to your .exe so that PowerIK can be linked at runtime.</p>
-<h3 id="initialization">Initialization</h3>
-<p>Right when your animation system is loading up, you need to initialize PowerIK.</p>
-<ol>
-<li>Instantiate a PowerIK::Solver() class.</li>
-<li>Call Solver.SetNumBones() to reserve space for the entire skeleton</li>
-<li>Call Solver.AddBone() for each bone in the skeleton</li>
-<li>Call Solver.SetRootBone() to specify the top bone (root of solver)</li>
-<li>Call Solver.AddEffector() for each effector (cannot add/remove effectors at runtime)</li>
-</ol>
-<p>On the <em>first</em> call to Solve(), PowerIK will allocate the necessary memory to support the bones and effectors that were added with AddBone().</p>
-<h3 id="update-overview">Update Overview</h3>
-<p>Once PowerIK is initialized, you're ready to start running it.</p>
-<p>At every tick in the simulation update loop, you need to:</p>
-<ol>
-<li>Give Power IK a new input pose.</li>
-<li>Update the effector settings (transforms, weights etc...).</li>
-<li>Call Solve() to generate a new pose.</li>
-<li>Copy the output pose <em>out</em> of the Solver and use it as desired</li>
-</ol>
-<p><strong>NOTE:</strong> The input pose does not <em>necessarily</em> have to change from frame to frame. PowerIK will work equally well with static poses or animation (and both are useful in different scenarios).</p>
-<h3 id="update-details">Update Details</h3>
-<p>Your update process should look like this:</p>
-<ol>
-<li>Call Solver.SetBoneTransform() for all bones to provide the input pose (your animation)</li>
-<li>Call Solver.SetEffectorTransform() for each effector to set their positions and rotations</li>
-<li>Call Solver.Solve() to run Power IK</li>
-<li>Call Solver.GetBoneTransform() to get your output pose</li>
-</ol>
-<p>See AnimNode_PowerIK::CopySolverInputs() and AnimNode_PowerIK::CopySolverOutputs() for examples of how to do these steps in Unreal.</p>
-<p><strong>Note on Transform Spaces:</strong> All transforms (input/ouput on both bones and effectors) are considered to be in <em>Character Space</em> (<em>Component Space</em> in Unreal nomenclature). This space usually has it's origin at the character's feet or root bone. PowerIK solves in this space, so it is most efficient to avoid conversion to/from local/bone space or world space and simply keep all bones and effectors in <em>Character Space</em>.</p>
-<p><strong>Note on PowerIK Math Library:</strong>  PowerIK uses it's own portable math library, so you have to convert your positions and rotations to/from PowerIK::Vec3 and PowerIK::Quat format. These formats use plain 32-bit floats and should be convertable with any standard 3d-vector or quaternion format.</p>
-<h3 id="shutdown-and-reset">Shutdown and Reset</h3>
-<p>When the PowerIK::Solver() destructor is called, it releases all allocated memory.</p>
-<p>In cases where you want to add/remove characters using PowerIK often, it may be better to keep a few solvers in memory and recycle them. To avoid reallocating memory, you can call PowerIK::Solver().Reset(). This will clear the internal memory (without releasing it) to be re-used with a different skeleton or different set of effectors. You must re-add Bones and Effectors after calling Reset() and treat it like a new Solver(). If the new skeletons have more bones than before Reset(), additional allocations may occur.</p>
-<p>PowerIK never allocates memory after the first call to Solve().</p>
+                <h1 id="poweriksolversettings-struct">PowerIK::SolverSettings Struct</h1>
+<h2 id="struct-powerik_lib_api-solversettings"><code>struct POWERIK_LIB_API SolverSettings</code></h2>
+<p>The settings used for the core solver. These setting only have to be set once. Though they can all be changed at runtime if desired.</p>
+<h2 id="unsigned-int-squashiterations"><code>unsigned int SquashIterations</code></h2>
+<p>Number of iterations to determine squashed limb shape. Default is 6.</p>
+<h2 id="unsigned-int-stretchiterations"><code>unsigned int StretchIterations</code></h2>
+<p>Number of iterations to determine stretched limb shape. Default is 6.</p>
+<h2 id="vec3-worldupnormal"><code>Vec3 WorldUpNormal</code></h2>
+<p>Up direction of world. Used for Center of Gravity and Grounding. Default is +Z (Unreal).</p>
+<h2 id="float-rootrotationmultiplier"><code>float RootRotationMultiplier</code></h2>
+<p>Amount to rotate the root in response to effectors. Default is 1.0. Value as high as 3 or 4 may be necessary in some cases.</p>
               
             </div>
           </div>
@@ -233,10 +183,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../solver/" class="btn btn-neutral float-right" title="Solver Class">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../settings_ground/" class="btn btn-neutral float-right" title="Ground Settings">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../unreal/procedural_anim/" class="btn btn-neutral" title="Procedural Animation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../solver/" class="btn btn-neutral" title="Solver Class"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -262,10 +212,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../unreal/procedural_anim/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../solver/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../solver/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../settings_ground/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
