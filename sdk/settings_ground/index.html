@@ -116,19 +116,53 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#bool-scalestride">bool ScaleStride</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#float-stridescaleforward">float StrideScaleForward</a>
+    <li class="toctree-l3"><a class="reference internal" href="#float-uphillstridescale">float UphillStrideScale</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#float-stridescaleback">float StrideScaleBack</a>
+    <li class="toctree-l3"><a class="reference internal" href="#float-downhillstridescale">float DownhillStrideScale</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#float-stridescaleside">float StrideScaleSide</a>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehillstridescale">float SidehillStrideScale</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehillpushouterfeet">float SidehillPushOuterFeet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehillpushinnerfeet">float SidehillPushInnerFeet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bool-lean">bool Lean</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-uphilllean">float UphillLean</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-downhilllean">float DownhillLean</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehilllean">float SidehillLean</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#bool-counterlean">bool CounterLean</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#float-leanforward">float LeanForward</a>
+    <li class="toctree-l3"><a class="reference internal" href="#const-char-counterleanbonename">const char* CounterLeanBoneName</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#float-leanback">float LeanBack</a>
+    <li class="toctree-l3"><a class="reference internal" href="#float-uphillcounterlean">float UphillCounterLean</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#float-leanside">float LeanSide</a>
+    <li class="toctree-l3"><a class="reference internal" href="#float-downhillcounterlean">float DownhillCounterLean</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehillcounterlean">float SidehillCounterLean</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bool-moveroot">bool MoveRoot</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-uphillvertoffset">float UphillVertOffset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-uphillhorizoffset">float UphillHorizOffset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-downhillvertoffset">float DownhillVertOffset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-downhillhorizoffset">float DownhillHorizOffset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehillvertoffset">float SidehillVertOffset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-sidehillhorizoffset">float SidehillHorizOffset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bool-rotatefoottoground">bool RotateFootToGround</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-pitchfootamount">float PitchFootAmount</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float-rollfootamount">float RollFootAmount</a>
     </li>
     </ul>
                 </li>
@@ -190,20 +224,54 @@
 <p>Maximum angle relative to gravity vector to apply leaning and stride scaling.</p>
 <h2 id="bool-scalestride"><code>bool ScaleStride</code></h2>
 <p>If true, stride of IsGrounded effectors will be scaled in Stride Direction.</p>
-<h2 id="float-stridescaleforward"><code>float StrideScaleForward</code></h2>
-<p>Amount to scale stride relative to the forward vector. Range is 0-1. Default 0.5.</p>
-<h2 id="float-stridescaleback"><code>float StrideScaleBack</code></h2>
-<p>Amount to scale stride relative to the backward vector. Range is 0-1. Default 0.5.</p>
-<h2 id="float-stridescaleside"><code>float StrideScaleSide</code></h2>
-<p>Amount to scale stride perpendicular to the forward vector. Range is 0-1. Default 0.5.</p>
+<h2 id="float-uphillstridescale"><code>float UphillStrideScale</code></h2>
+<p>Amount to scale stride when going uphill. Range is 0-1. Default 0.4.</p>
+<h2 id="float-downhillstridescale"><code>float DownhillStrideScale</code></h2>
+<p>Amount to scale stride when going downhill. Range is 0-1. Default 0.2.</p>
+<h2 id="float-sidehillstridescale"><code>float SidehillStrideScale</code></h2>
+<p>Amount to scale stride when on a side-hill. Range is 0-1. Default 1.0.</p>
+<h2 id="float-sidehillpushouterfeet"><code>float SidehillPushOuterFeet</code></h2>
+<p>Amount (in centimeters) to push outside feet outwards on sidehills. Default is 20.0.</p>
+<h2 id="float-sidehillpushinnerfeet"><code>float SidehillPushInnerFeet</code></h2>
+<p>Amount (in centimeters) to push inside feet outwards on sidehills. Default is 10.0.</p>
+<h2 id="bool-lean"><code>bool Lean</code></h2>
+<p>If True, character root bone is rotated in opposite direction of ground normal.</p>
+<h2 id="float-uphilllean"><code>float UphillLean</code></h2>
+<p>Amount to lean forward when going uphill. Range is 0-1. Default 0.3.</p>
+<h2 id="float-downhilllean"><code>float DownhillLean</code></h2>
+<p>Amount to lean backward when going downhill. Range is 0-1. Default 0.5.</p>
+<h2 id="float-sidehilllean"><code>float SidehillLean</code></h2>
+<p>Amount to lean sideways into side-hills. Range is 0-1. Default 0.0.</p>
 <h2 id="bool-counterlean"><code>bool CounterLean</code></h2>
-<p>If True, root bone is rotated in opposite direction of ground normal.</p>
-<h2 id="float-leanforward"><code>float LeanForward</code></h2>
-<p>Amount to lean forward (up hill). Range is 0-1. Default 0.5.</p>
-<h2 id="float-leanback"><code>float LeanBack</code></h2>
-<p>Amount to lean backward (down hill). Range is 0-1. Default 0.5.</p>
-<h2 id="float-leanside"><code>float LeanSide</code></h2>
-<p>Amount to lean sideways (side hill). Range is 0-1. Default 0.5.</p>
+<p>If True, will counter lean CounterLeanBone. Usually this is the head.</p>
+<h2 id="const-char-counterleanbonename"><code>const char* CounterLeanBoneName</code></h2>
+<p>Name of base of counter lean bone. Usually this is the base Head bone.</p>
+<h2 id="float-uphillcounterlean"><code>float UphillCounterLean</code></h2>
+<p>Amount to counter lean backward when going uphill. Range is 0-1. Default 0.8.</p>
+<h2 id="float-downhillcounterlean"><code>float DownhillCounterLean</code></h2>
+<p>Amount to counter lean backward when going downhill. Range is 0-1. Default 1.0.</p>
+<h2 id="float-sidehillcounterlean"><code>float SidehillCounterLean</code></h2>
+<p>Amount to counter lean sideways into side-hills. Range is 0-1. Default 0.0.</p>
+<h2 id="bool-moveroot"><code>bool MoveRoot</code></h2>
+<p>If True, character root bone position is gradually pushed vertically and horizontally.</p>
+<h2 id="float-uphillvertoffset"><code>float UphillVertOffset</code></h2>
+<p>Amount (in centimeters) to push the character root up/down when going UP hill. Default 10.0.</p>
+<h2 id="float-uphillhorizoffset"><code>float UphillHorizOffset</code></h2>
+<p>Amount (in centimeters) to push the character root forward/back when going UP hill. Default -20.0.</p>
+<h2 id="float-downhillvertoffset"><code>float DownhillVertOffset</code></h2>
+<p>Amount (in centimeters) to push the character root up/down when going DOWN hill. Default 10.0.</p>
+<h2 id="float-downhillhorizoffset"><code>float DownhillHorizOffset</code></h2>
+<p>Amount (in centimeters) to push the character root forward/back when going DOWN hill. Default 20.0.</p>
+<h2 id="float-sidehillvertoffset"><code>float SidehillVertOffset</code></h2>
+<p>Amount (in centimeters) to push the character root up/down when on a SIDE hill. Default -10.0.</p>
+<h2 id="float-sidehillhorizoffset"><code>float SidehillHorizOffset</code></h2>
+<p>Amount (in centimeters) to push the character root forward/back when on a SIDE hill. Default -10.0.</p>
+<h2 id="bool-rotatefoottoground"><code>bool RotateFootToGround</code></h2>
+<p>If True, feet are oriented to ground normal.</p>
+<h2 id="float-pitchfootamount"><code>float PitchFootAmount</code></h2>
+<p>Amount to pitch foot to orient to up/down hills. Range is 0-1. Default 1.0.</p>
+<h2 id="float-rollfootamount"><code>float RollFootAmount</code></h2>
+<p>Amount to roll foot to orient to sidehills. Range is 0-1. Default 0.6.</p>
               
             </div>
           </div>

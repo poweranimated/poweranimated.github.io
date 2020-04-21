@@ -168,16 +168,26 @@ Run solver using new effector locations
 
 <p>As you can see, because it is based on raycasts, you have to make sure that your collision filtering and level collision is setup to support good ground IK.</p>
 <h2 id="how-to-setup-grounding">How to Setup Grounding</h2>
+<h3 id="first-setup-a-solver-with-grounded-effectors">First Setup a Solver with Grounded Effectors</h3>
 <ol>
 <li>Create a <em>Power IK Solver</em> node with one effector for each “foot” to be grounded.</li>
 <li>Set <em>Bone Name</em> to the name of the foot bone.</li>
-<li>Leave <em>Space</em> to <em>Relative to Input Pose</em> if you want the normal animation to play over the ground.</li>
-<li>Leave <em>Position</em> and <em>Rotation</em> at zero.</li>
 <li>Check <em>IsGrounded</em> on.</li>
-<li>Compile and Play.</li>
+<li>Set Pull Weight to 0.0</li>
+<li>Set Normalize Pulling to off.</li>
 </ol>
+<p>At this point, Power IK will stick the feet to the ground. Turning the Pull Weight off prevents the effector from yanking the body around while animating. Though for creatures with many limbs (like spiders), it may actually be nice to have the limbs pulling the body. For bipeds though, it is typically best to turn Pulling off and let the slope alignment settings move the hips for you.</p>
 <p><strong>Note:</strong> You will likely want to utilize <a href="../effector_smoothing">Effector Smoothing</a> when using IsGrounded. Otherwise legs can seemingly "pop" instantly ontop of obstacles.</p>
-<h2 id="grounding-settings">Grounding Settings</h2>
+<h3 id="now-tune-the-slope-settings">Now Tune the Slope Settings</h3>
+<ol>
+<li>Select the solver node and in the details pane find the Ground Slope section.</li>
+<li>Tune these settings to achieve the desired ground alignment behavior.</li>
+</ol>
+<p>See the Ground Slope Settings section for details on what each of these parameters do.</p>
+<h3 id="interactive-tuning">Interactive Tuning</h3>
+<p>You can adjust the slope settings interactively while playing in editor. Simply open the Animation Blueprint, select your character and adjust the slope settings. You must Compile the animation blueprint between parameter adjustements to see the effect while playing in editor. </p>
+<p>It can be useful to place a cube underneath your character that you can rotate freely as you tune slope settings interactively. </p>
+<h2 id="collision-settings">Collision Settings</h2>
 <p><img alt="Solver Node" src="../img/solver_node/ground_settings.png" /></p>
 <p>All the Grounding settings are found by selecting the solver node and opening the details panel:</p>
 <ul>
@@ -186,6 +196,107 @@ Run solver using new effector locations
 <li><strong>Trace Complex:</strong> whether to trace against Complex or Simple collision geometry. Complex is usually preferred, though slightly more expensive.</li>
 <li><strong>Ray Cast Up</strong>: the distance in centimeters to cast upwards looking for terrain to stand on.</li>
 <li><strong>Ray Cast Down</strong>: the distance in centimeters to cast downwards looking for terrain to stand on.</li>
+</ul>
+<h2 id="slope-alignment-settings">Slope Alignment Settings</h2>
+<h3 id="global-settings">Global Settings</h3>
+<ul>
+<li><strong>Vec3 StrideDirection:</strong> Normalized vector that describes the direction of travel. This vector points in the forward facing direction of your character and usually remains constant.</li>
+<li><strong>MaxGroundAngle:</strong> Maximum angle relative to gravity vector to apply leaning and stride scaling.</li>
+</ul>
+<h3 id="stride-scaling">Stride Scaling</h3>
+<p>These settings scale the stride of the foot effectors. Essentially making the character take longer or shorter steps.</p>
+<ul>
+<li>
+<p><strong>ScaleStride bool:</strong> If true, stride of IsGrounded effectors will be scaled in Stride Direction.</p>
+</li>
+<li>
+<p><strong>UphillStrideScale float:</strong> Amount to scale stride when going uphill. Range is 0-1. Default 0.4.</p>
+</li>
+<li>
+<p><strong>DownhillStrideScale float:</strong> Amount to scale stride when going downhill. Range is 0-1. Default 0.2.</p>
+</li>
+<li>
+<p><strong>SidehillStrideScale float:</strong> Amount to scale stride when on a side-hill. Range is 0-1. Default 1.0.</p>
+</li>
+<li>
+<p><strong>SidehillPushOuterFeet float:</strong> Amount (in centimeters) to push outside feet outwards on sidehills. Default is 20.0.</p>
+</li>
+<li>
+<p><strong>SidehillPushInnerFeet float:</strong> Amount (in centimeters) to push inside feet outwards on sidehills. Default is 10.0.</p>
+</li>
+</ul>
+<h3 id="leaning">Leaning</h3>
+<p>These settings rotate the spine of the character to lean into or away from a slope.</p>
+<ul>
+<li>
+<p><strong>Lean bool:</strong> If True, character root bone is rotated in opposite direction of ground normal.</p>
+</li>
+<li>
+<p><strong>UphillLean float:</strong> Amount to lean forward when going uphill. Range is 0-1. Default 0.3.</p>
+</li>
+<li>
+<p><strong>DownhillLean float:</strong> Amount to lean backward when going downhill. Range is 0-1. Default 0.5.</p>
+</li>
+<li>
+<p><strong>SidehillLean float:</strong> Amount to lean sideways into side-hills. Range is 0-1. Default 0.0.</p>
+</li>
+</ul>
+<h3 id="counter-leaning">Counter Leaning</h3>
+<p>These settings are designed to allow the head of the character to counteract the spine leaning adjustments. This prevents characters from looking straight down when leaning into an up hill, or straight up when leaning back on a downhill.</p>
+<ul>
+<li>
+<p><strong>CounterLean bool:</strong> If True, will counter lean CounterLeanBone. Usually this is the head.</p>
+</li>
+<li>
+<p><strong>CounterLeanBoneName Name:</strong>Name of base of counter lean bone. Usually this is the base Head bone.</p>
+</li>
+<li>
+<p><strong>UphillCounterLean float:</strong> Amount to counter lean backward when going uphill. Range is 0-1. Default 0.8.</p>
+</li>
+<li>
+<p><strong>DownhillCounterLean float:</strong> Amount to counter lean backward when going downhill. Range is 0-1. Default 1.0.</p>
+</li>
+<li>
+<p><strong>SidehillCounterLean float:</strong> Amount to counter lean sideways into side-hills. Range is 0-1. Default 0.0.</p>
+</li>
+</ul>
+<h3 id="root-offset">Root Offset</h3>
+<p>These settings let you offset the position of the root bone above the foot effectors. It's useful to be able to push the root forward/back and up and down in reaction to the slope.</p>
+<ul>
+<li>
+<p><strong>MoveRoot bool:</strong> If True, character root bone position is gradually pushed vertically and horizontally.</p>
+</li>
+<li>
+<p><strong>UphillVertOffset float:</strong> Amount (in centimeters) to push the character root up/down when going UP hill. Default 10.0.</p>
+</li>
+<li>
+<p><strong>UphillHorizOffset float:</strong> Amount (in centimeters) to push the character root forward/back when going UP hill. Default -20.0.</p>
+</li>
+<li>
+<p><strong>DownhillVertOffset float:</strong> Amount (in centimeters) to push the character root up/down when going DOWN hill. Default 10.0.</p>
+</li>
+<li>
+<p><strong>DownhillHorizOffset float:</strong> Amount (in centimeters) to push the character root forward/back when going DOWN hill. Default 20.0.</p>
+</li>
+<li>
+<p><strong>SidehillVertOffset float:</strong> Amount (in centimeters) to push the character root up/down when on a SIDE hill. Default -10.0.</p>
+</li>
+<li>
+<p><strong>SidehillHorizOffset float:</strong> Amount (in centimeters) to push the character root forward/back when on a SIDE hill. Default -10.0.</p>
+</li>
+</ul>
+<h3 id="foot-rotation">Foot Rotation</h3>
+<p>It is useful to be able to control the rotation of the foot pitch and roll independently. Creatures usually orient the pitch of their foot to the ground, but only slightly roll the foot to the ground.</p>
+<ul>
+<li>
+<p><strong>RotateFootToGround bool:</strong> If True, feet are oriented to ground normal.</p>
+</li>
+<li>
+<p><strong>PitchFootAmount float:</strong> Amount to pitch foot to orient to up/down hills. Range is 0-1. Default 1.0.</p>
+</li>
+<li>
+<p><strong>RollFootAmount float:</strong> Amount to roll foot to orient to sidehills. Range is 0-1. Default 0.6.</p>
+</li>
 </ul>
               
             </div>
