@@ -202,6 +202,9 @@
 <li>Hit Play, then hit Eject.</li>
 </ol>
 <p>You should see gizmos at the effector locations. Select them with the mouse, hit “W” key to enter move mode and drag your rig interactively!</p>
+<p><strong>Important!</strong> 
+The effector gizmos use a translucent shader. In order to select them you must have <em>Allow Translucent Selection</em> turned on in the editor settings.
+<img alt="Translucent Mode Setting" src="../img/rig/trans_mode.png" /></p>
 <h2 id="interactive-rigs-at-runtime">Interactive Rigs at Runtime</h2>
 <p>There is obviously no "Eject" button in Shipping builds of Unreal. The Power IK Rig component is meant purely for debugging effector and solver settings.</p>
 <p>But you could easily replicate the Power IK Rig behavior at runtime if needed, using whatever user input you desire (touch, gesture, VR, etc). The Power IK Rig component drives effector positions in the same way that any procedural system would and in that way it acts as an example of how to create systems that drive Power IK.</p>
