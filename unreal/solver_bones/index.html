@@ -63,7 +63,11 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#character-root">Character Root</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ground-plane-bone">Ground Plane Bone</a>
+    <li class="toctree-l3"><a class="reference internal" href="#excluded-bones">Excluded Bones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#which-bones-are-solved">Which Bones Are Solved</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#what-bones-to-exclude">What Bones to Exclude</a>
     </li>
     </ul>
                 </li>
@@ -160,16 +164,28 @@
             <div class="section">
               
                 <h1 id="solver-bones">Solver Bones</h1>
-<p>The Power IK solver itself requires just 2 bones to be specified by the user.</p>
+<p>The Power IK solver needs some information about each skeleton.</p>
 <p><img alt="Set Roots" src="../img/solver_node/solver_node.png" /></p>
 <p><strong>Note:</strong> Power IK does not support changing these bone names at run-time. They must be set prior to the first call to Solve().</p>
 <h2 id="character-root">Character Root</h2>
 <p>Set the <strong>Character Root</strong> to the top-most joint that is part of your character's body. This is usually <strong>not</strong> the actual top-node of the skeleton. This defaults to "pelvis" though some rigs call it "hips" or "body". </p>
 <p>Any bones <strong>below</strong> the Character Root will <em>potentially</em> be affected by Power IK.</p>
 <p>Any bones <strong>above</strong> the Character Root are completely ignored by Power IK and will pass through the solver unaffected.</p>
-<h2 id="ground-plane-bone">Ground Plane Bone</h2>
-<p>Set this to the bone in your skeleton that is located at the origin of your character. This defaults to "root", but some rigs call it "world" or "origin".</p>
-<p>This bone defines the ground plane of the input animation and is only used when the solver needs a reference to the ground location. The Ground Plane Bone is required even if none of the effectors are grounded.</p>
+<h2 id="excluded-bones">Excluded Bones</h2>
+<p><em>This is an important feature for getting good results from Power IK.</em></p>
+<p>In the Constraints section of the solver details panel you will find a list of Names called <em>Excluded Bones</em>. Use this list to specify those bones that should not bend or be considered as part of the IK solve.</p>
+<p>Bones in this list will be completely ignored by Power IK. There is no additional cost for excluding bones.</p>
+<h2 id="which-bones-are-solved">Which Bones Are Solved</h2>
+<p>It is important to understand how Power IK determines which bones will be affected by the solver, as this will help you determine which bones ought to be excluded for best results. </p>
+<p>When the solver is initialized, it walks UP the hierarchy (child to parent) from each effector until it reaches the Character Root bone. All of the bones along this path will be solved for. All the extra bones (ie those bones not in this direct lineage), are simply parented into the solved sub-skeleton.</p>
+<p>There is no point excluding a Bone that is not a direct ancestor of an effector. Power IK takes care of these for you.</p>
+<h2 id="what-bones-to-exclude">What Bones to Exclude</h2>
+<p>You should exclude Bones in the following circumstances:</p>
+<ol>
+<li><em>The bone is organizational</em>. It acts as a grouping or a dummy transform for it's children, but does not have any anatomical purpose. Bones like this can often negatively impact the quality of the solved pose.</li>
+<li><em>The bone is for twisting deformation</em>. So called "twist bones" are often inserted into a hiearchy for purposes of avoiding the candy-wrapper skinning artifact. Such bones are not meant to be bent and thus need to be excluded.</li>
+<li><em>The bone is coincident with another bone</em>. If a child bone lies directly on top of it's parent, this can make it difficult for the solver to reconcile it's orientation. Exclude coincident bones to avoid this issue.</li>
+</ol>
               
             </div>
           </div>
