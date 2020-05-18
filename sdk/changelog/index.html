@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>ChangeLog - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ChangeLog";
+    var mkdocs_page_input_path = "sdk\\changelog.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">ChangeLog</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#146-2020-may-18">[1.46] - 2020-MAY-18</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#145-2020-may-02">[1.45] - 2020-MAY-02</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#144-2020-may-01">[1.44] - 2020-MAY-01</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#143-2020-apr-25">[1.43] - 2020-APR-25</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#142-2020-apr-23">[1.42] - 2020-APR-23</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#141-2020-apr-21">[1.41] - 2020-APR-21</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#14-2020-apr-20">[1.4] - 2020-APR-20</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#13-2020-apr-10">[1.3] - 2020-APR-10</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#122-2020-apr-04">[1.22] - 2020-APR-04</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#121-2020-mar-30">[1.21] - 2020-MAR-30</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#09-2020-mar-26">[0.9] - 2020-MAR-26</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#08-2020-feb-28">[0.8] - 2020-FEB-28</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#07-2020-feb-28">[0.7] - 2020-FEB-28</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/root_rotation/">Root Rotation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/center_of_gravity/">Center of Gravity</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_performance/">Solver Performance</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/interactive_rig/">Interactive Rig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/common_issues/">Common Issues</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/procedural_anim/">Procedural Animation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_sdk/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../solver/">Solver Class</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Settings</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_solver/">Solver Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_ground/">Ground Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_cog/">Center of Gravity Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../settings_smoothing/">Effector Smoothing Settings</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ChangeLog</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="official-power-ik-change-log">Official Power IK Change Log</h1>
+<pre><code>Added: new features.
+Changed: changes in existing functionality.
+Deprecated: soon-to-be removed features.
+Removed: now removed features.
+Fixed: any bug fixes.
+</code></pre>
+
+<h2 id="146-2020-may-18">[1.46] - 2020-MAY-18</h2>
+<ul>
+<li>Added: Support for Linux platform (multiplayer Linux servers)</li>
+<li>Added: Support for Unreal 4.25</li>
+<li>Added: Separate position/rotation spaces on effectors</li>
+<li>Added: Docs better describe installation for Engine vs Project</li>
+<li>Fixed: SDK compiles warning free on clang and MSVC compilers</li>
+<li>Fixed: Packaging script removes potentially stale POWERIK.dll</li>
+<li>Changed: Packaging script copies Changelog and License to top level folder</li>
+<li>Removed: (SDK) IsAdditive option on SetEffectorTransform(), assumes Component Space now</li>
+</ul>
+<h2 id="145-2020-may-02">[1.45] - 2020-MAY-02</h2>
+<ul>
+<li>Added: "Exclude Bones" list on solver to remove bones from skeleton</li>
+<li>Fixed: packaging error when plugin installed in engine folder saying "PrecompileForTargets"</li>
+<li>Added: Error reporting in all SDK function return values</li>
+<li>Changed: SDK solver code modularized further</li>
+</ul>
+<h2 id="144-2020-may-01">[1.44] - 2020-MAY-01</h2>
+<ul>
+<li>Fixed: plugin now works in precompiled mode (outside project)</li>
+<li>Fixed: compile errors in plugin when not using precompiled headers</li>
+<li>Fixed: critical bug with string handling exposed on skeleton with many bones</li>
+</ul>
+<h2 id="143-2020-apr-25">[1.43] - 2020-APR-25</h2>
+<ul>
+<li>Added: Static foot offset parameter to fix minor foot penetration</li>
+<li>Removed: Ground Plane Bone no longer used or needed (removed)</li>
+<li>Fixed: incorrect warning of missing counter lean bone when not using counter lean</li>
+<li>Added: mention of "translucent mode" to interactive rig docs</li>
+<li>Fixed: PowerIK now works in Standalone mode</li>
+<li>Fixed: Incorrect warnings about "Missing effector bones called 'None'"</li>
+<li>Fixed: Warnings, uninitialized GroundSlope variables</li>
+<li>Fixed: Procedural walking demo initializes foot locations correctly</li>
+</ul>
+<h2 id="142-2020-apr-23">[1.42] - 2020-APR-23</h2>
+<ul>
+<li>Fixed: Crash when connecting PowerIK to layered blend per bone (and likely some other nodes too)</li>
+</ul>
+<h2 id="141-2020-apr-21">[1.41] - 2020-APR-21</h2>
+<ul>
+<li>Added: Ground normal smoothed with max angular speed (degrees/sec)</li>
+<li>Added: Delta smoothing to grounded effectors</li>
+<li>Changed: Unreal, removed separate Ground struct on Effectors</li>
+<li>Fixed: Bug, FName to string conversion was using stack memory</li>
+</ul>
+<h2 id="14-2020-apr-20">[1.4] - 2020-APR-20</h2>
+<ul>
+<li>Added: Ground alignment stride scaling</li>
+<li>Added: Ground alignment leaning (spine) and counter leaning (head)</li>
+<li>Added: Ground alignment adjustable foot rotation</li>
+<li>Changed: Ground alignment documentation includes all new features</li>
+<li>Added: SDK now fully documented online and commented in code</li>
+<li>Changed: SDK, all structs passed by const reference</li>
+<li>Changed: SDK, all settings broken out into structs with sensible default values</li>
+<li>Fixed: Solver bug causing PullWeight of zero to not be respected on hips.</li>
+<li>Fixed: General solver bug causing intermediate effectors to stretch skeleton</li>
+</ul>
+<h2 id="13-2020-apr-10">[1.3] - 2020-APR-10</h2>
+<ul>
+<li>Added: Directional pull weight vectors.</li>
+<li>Added: "NormalizePulling" option on effectors for adding more power to body</li>
+<li>Added: "PullBodyAmount" to COG constraint to smooth out spine</li>
+<li>Added: "RootRotationMultiplier" to adjust amount of rotation on root</li>
+<li>Added: Ability to remove intermediate bones by setting Stiffness to 1.0</li>
+<li>Added: Global multiplier on solver node to adjust effector smoothing</li>
+<li>Added: "Prone" biped ground align demo</li>
+<li>Added: 3-point VR tracker demo</li>
+<li>Changed: SDK SetEffectorTransform() split into 3 separate functions</li>
+<li>Changed: SDK no longer requires local transform in SetBones()</li>
+<li>Changed: UNREAL Ground settings in separate struct (shareable amongst effectors)</li>
+<li>Changed: UNREAL Smooth settings in separated struct (shareable amongst effectors)</li>
+<li>Added: UNREAL, bool toggle on PowerIKRig to disable component without having to remove it</li>
+<li>Added: Data for ground alignment control (new experimental feature)</li>
+<li>Fixed: SDK Bug causing elbows to flip in extreme poses</li>
+<li>Fixed: Unreal Bug causing names to get mangled in debug builds</li>
+</ul>
+<h2 id="122-2020-apr-04">[1.22] - 2020-APR-04</h2>
+<ul>
+<li>Added: Optional, Pos/Rot temporal smoothing on effectors</li>
+<li>Added: Global solver alpha to blend everything on/off</li>
+<li>Added: "RotateLimb" bool on effector rotates whole limb smoothly</li>
+<li>Changed: "IgnoreRotation" now called "RotateBone"</li>
+<li>Changed: All solver data private / routed through API</li>
+<li>Changed: COG constraint now tunable</li>
+<li>Changed: changelog.txt and license.txt packaged in SDK</li>
+<li>Fixed: Crash if all PullWeights set to 0</li>
+<li>Fixed: IsGrounded effectors now inherit ground angle</li>
+</ul>
+<h2 id="121-2020-mar-30">[1.21] - 2020-MAR-30</h2>
+<ul>
+<li>Added: Support for 3-point VR tracking! (demo soon)</li>
+<li>Added: Stiffness constraint (experimental)</li>
+<li>Added: Center of Gravity constraint (needed for VR)</li>
+<li>Changed: much improved squash and stretch overall</li>
+<li>Fixed: Unreal project warnings</li>
+</ul>
+<h2 id="09-2020-mar-26">[0.9] - 2020-MAR-26</h2>
+<ul>
+<li>Added: support for custom bending directions</li>
+<li>Added: plumbing to support joint limits (coming soon)</li>
+<li>Changed: improved fork joint rotation (smoother)</li>
+<li>Changed: effector PullWeights now behave much better</li>
+<li>Changed: Unreal Rig component effectors smaller and transparent</li>
+<li>Fixed: bug, crashed on skeletons with fork joints next to each other</li>
+</ul>
+<h2 id="08-2020-feb-28">[0.8] - 2020-FEB-28</h2>
+<ul>
+<li>Fixed: packaging for Windows and Linux</li>
+</ul>
+<h2 id="07-2020-feb-28">[0.7] - 2020-FEB-28</h2>
+<ul>
+<li>Added: Power IK Windows build available on Unreal Marketplace</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../unreal/getting_started_unreal/" class="btn btn-neutral float-right" title="Getting Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../unreal/getting_started_unreal/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
