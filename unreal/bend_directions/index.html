@@ -165,12 +165,12 @@
               
                 <h1 id="bend-directions">Bend Directions</h1>
 <p>By default, Power IK will bend limbs in the direction that they are bent in the input pose.</p>
-<p>Sometimes the input pose does not give a good enough hint of which direction to bend in. So you must explicitly tell the solver which direction a given bone is meant to bend in.</p>
-<p>If you witness knees and elbows bending off-axis, chances are you need to specify a custom Bend Direction.</p>
+<p>Sometimes the input pose does not give a good enough hint of which direction to bend in. So the solver must be supplied with an explicit Bend Direction.</p>
+<p>If knees and elbows are observed bending off-axis, chances are custom Bend Directions must be supplied.</p>
 <p><img alt="Bend Directions" src="../img/solver_node/bend_directions.png" /></p>
 <h2 id="specify-a-custom-bend-direction">Specify a Custom Bend Direction</h2>
 <ol>
-<li>Determine the name of the bone that is bending in the wrong direction. You can find this in the Skeleton editor in Unreal.</li>
+<li>Determine the name of the bone that is bending in the wrong direction. This can be found in the Skeleton editor in Unreal.</li>
 <li>Determine what local axis (in bone space) that points in the direction the limb should bend. For example, if the Y axis points in the direction of the knee, the bend vector is 0, 1, 0. Make note of this vector.</li>
 <li>Select the Power IK Solver node and in the detail panel locate the <em>Constraints</em> section.</li>
 <li>Click the <em>+</em> icon next to Bend Directions to add a new Bend Direction to the array.</li>
@@ -181,7 +181,7 @@
 <p>The following image shows the custom bend directions appropriate for the Unreal Mannequin. Notice that the Right side bones have their vectors negated. </p>
 <p><img alt="Bend Directions" src="../img/solver_node/mannequin_bending.png" /></p>
 <h2 id="how-to-determine-the-bend-vector">How to Determine the Bend Vector</h2>
-<p>You can verify these vectors by selecting the bone in the skeleton editor and observing the axis that points in the direction the bone should bend. In the image below you can see the Mannequin's left knee should point in the positive Y direction, so the bend vector is (0, 1, 0).</p>
+<p>These vectors can be discovered by selecting the bone in the skeleton editor and observing the axis that points in the direction the bone should bend. In the image below the Mannequin's left knee should point in the positive Y direction, so the bend vector is (0, 1, 0).</p>
 <p><img alt="Bend Directions" src="../img/solver_node/knee_vector.png" /></p>
               
             </div>
