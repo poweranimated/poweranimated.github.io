@@ -56,6 +56,14 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#engine-installation">Engine Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enable-the-plugin">Enable the Plugin</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#project-installation">Project Installation</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a>
     </li>
@@ -159,16 +167,36 @@
 <p>The Power IK Unreal Plugin can be purchased and installed through the Unreal Marketplace. </p>
 <p>Power IK Unreal Plugin is currently available only for Unreal 4.24 on Windows 64 bit. If you require a different version for a different platform, please contact support@poweranimated.com.</p>
 <h2 id="installation">Installation</h2>
-<p>The fastest way to get started with Power IK is to purchase it from the Unreal Marketplace and use the Epic Games launcher to install it directly into your engine.</p>
+<h3 id="engine-installation">Engine Installation</h3>
+<p>The fastest way to get started with Power IK is to purchase it from the Unreal Marketplace and use the Epic Games launcher to install it directly into the engine folder.</p>
+<ol>
+<li>Open the <em>Epic Games launcher</em></li>
+<li>Click on <em>Unreal Engine</em></li>
+<li>Click on <em>Library</em></li>
+<li>Search the Vault for <em>Power IK</em></li>
+<li>Click <em>Install to Engine</em></li>
+</ol>
+<p>Now Launch the engine version that you installed Power IK to.</p>
+<p><img alt="Engine Install" src="../img/quick_start/engine_install.png" /></p>
+<h3 id="enable-the-plugin">Enable the Plugin</h3>
+<ol>
+<li>In Unreal select Edit &gt; Plugins</li>
+<li>Search for Power IK in the Animation category.</li>
+<li>Check <em>Enabled</em></li>
+</ol>
+<p>Unreal will prompt you to restart the editor to load the plugin. After restarting, Power IK will be loaded and ready to use!</p>
+<p><img alt="Engine Install" src="../img/quick_start/enable_plugin.png" /></p>
+<h3 id="project-installation">Project Installation</h3>
 <p>To install it manually, follow these steps:</p>
 <ol>
-<li>Download and unzip the PowerIK plugin</li>
-<li>Copy the \PowerIK directory to your project plugins folder: C:\UnrealProjects\MyProject\Plugins</li>
-<li>Right click on your .uproject file and select <em>Generate Visual Studio project files</em></li>
-<li>Build and launch the project as normal..</li>
+<li>Download and unzip the PowerIK plugin.</li>
+<li>Copy the \PowerIK directory to the MyProject/Plugins folder.</li>
+<li>Right click on the .uproject file and select <em>Generate Visual Studio project files</em></li>
+<li>Build and launch the project as normal.</li>
 </ol>
 <p><img alt="Gen SLN" src="../img/quick_start/gen_sln.png" /></p>
-<p>Note: If you encounter an error when starting Unreal after installing Power IK, please check that you have the Visual Studio Prerequisites installed for Unreal Engine. Missing dll errors (VCRUNTIME140_1.dll for example) are usually resolved by installing the 
+<p>Note: If you encounter an error when starting Unreal after installing Power IK, please check that the Visual Studio Prerequisites are installed for Unreal Engine. </p>
+<p>Missing dll errors (VCRUNTIME140_1.dll for example) are usually resolved by installing the 
 <a href="https://www.microsoft.com/en-ca/download/details.aspx?id=48145">Visual C++ Runtime</a>.</p>
 <h2 id="quick-start">Quick Start</h2>
 <p>To use Power IK, you need a Skeletal Mesh and an Animation Blueprint. </p>

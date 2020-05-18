@@ -82,6 +82,14 @@
     <li class="toctree-l3"><a class="reference internal" href="#bone-name">Bone Name</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#position-and-rotation-space">Position and Rotation Space</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#relative-to-input-pose">Relative To Input Pose</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#space-conversions">Space Conversions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#separate-position-rotation-spaces">Separate Position / Rotation Spaces</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#pull-weight">Pull Weight</a>
     </li>
@@ -177,33 +185,39 @@
 <h2 id="what-is-a-power-ik-effector">What is a Power IK Effector?</h2>
 <p>Effectors are how you tell the solver what bone of the skeleton you want to pull, and where you want it to go. <strong>Each effector is associated with a single bone</strong> in the skeleton and supplies a position and rotation for that bone to reach towards.</p>
 <p><img alt="Effector" src="../img/effectors/effector.png" /></p>
-<p>If you only add 1 effector, it will pull your entire skeleton as though your skeleton were parented to it. Once you have multiple effectors, the solver is able to do interesting work by creating a pose that reaches both effectors simultaneously.</p>
+<p>If only 1 effector is added, it will pull the entire skeleton as though the skeleton were parented to it. Once multiple effectors are present, the solver is able to do interesting work by creating a pose that reaches both effectors simultaneously.</p>
 <p>For example, by adding an effector to both feet of an ogre, you can pull 1 foot upwards while leaving the other foot on the ground. The hips of the ogre will translate and rotate to help the overall skeleton reach this desired goal.</p>
 <h2 id="bone-name">Bone Name</h2>
-<p>This is the name of the bone you want this effector to affect. The name in this field must match the name in the skeleton precisely. </p>
+<p>This is the name of the bone that this effector will affect. The name in this field must match the name in the skeleton precisely. </p>
 <p>Bones cannot be affected by more than 1 effector.</p>
 <h2 id="position-and-rotation-space">Position and Rotation Space</h2>
-<p>The Position (Vector) and Rotation (Rotator) inputs are both considered to be in 1 of three spaces:</p>
+<p>The Position (Vector) and Rotation (Rotator) inputs are considered to be in one of three possible spaces:</p>
 <ol>
-<li><strong>Relative to Input Pose</strong>: interprets inputs as offsets relative to the affected bone in the pose that is passed as input. This is the default space.</li>
+<li><strong>Relative to Input Pose</strong>: interprets inputs as character-space offsets <em>relative</em> to the affected bone in the pose that is passed as input. This is the default space.</li>
 <li><strong>World Space</strong>: interprets inputs as world space.</li>
 <li><strong>Component Space</strong>: interprets inputs as being relative to the root of the Skeletal Mesh.</li>
 </ol>
 <p><img alt="Space" src="../img/effectors/space.png" /></p>
-<p>By default, the space of the effector is <em>Relative to Input Pose</em> with zero position and rotation values. This is essentially telling the solver to not modify the input pose (ie do nothing).</p>
+<h3 id="relative-to-input-pose">Relative To Input Pose</h3>
+<p>By default, the space of the effector is <em>Relative to Input Pose</em> with zero position and rotation values. This is essentially telling the solver to <em>not</em> modify the input pose (ie do nothing).</p>
 <p>All three spaces are useful in different scenarios. But the most common is <em>Relative to Input Pose</em>. This can be used to nudge the skeleton from it’s animated position. For example, by taking a walking animation and pulling the feel outwards and the hips down you can turn a walk into a crouch-walk.</p>
+<h3 id="space-conversions">Space Conversions</h3>
+<p>Blueprint and C++ can easily convert rotations and positions between any space in Unreal. The Component Space and World Space options are simply conveniences. Internally, the IK solver uses only Component Space (called Character Space in the SDK).</p>
+<h3 id="separate-position-rotation-spaces">Separate Position / Rotation Spaces</h3>
+<p>As of v1.46 Power IK supports <em>separate</em> spaces for position and rotation. This is especially useful for rotating a skeleton while leaving it's position unaffected (by leaving it zero relative to the input pose). This is the basis of a "look at" rig.</p>
 <h2 id="pull-weight">Pull Weight</h2>
 <p>The Pull Weight of an effector determines how much influence the effector has over the whole body <em>relative to other effectors</em>. </p>
 <p>If all the Pull Weight values are the same, they all have the same relative influence on the skeleton. This is regardless of their absolute values. </p>
 <p>In cases where you want simple reaching behavior, leaving all the Pull Weights set to 1.0 will split the influence of the effectors evenly.</p>
-<p>Power IK weights the unaffected parts of the skeleton based on distance (along the skeleton) to your effectors. So you should get decent influence distribution by default. </p>
-<p>Adjusting Pull Weights is sometimes necessary in situations where you need one part of the body to dominate the pose. For example, to setup a 3-point VR tracking solver, you would want 100% of the weight on the head tracker and zero on the hands. This will cause the hands to not push the torso around and instead have the hips and torso follow the head.</p>
+<p>Power IK weights the unaffected parts of the skeleton based on distance (along the skeleton) to the effectors. This provides decent influence distribution by default. </p>
+<p>Adjusting Pull Weights is sometimes necessary in situations where one part of the body needs to dominate the pose. For example, to setup a 3-point VR tracking solver, tune 100% of the weight on the head tracker and 0% on the hands. This will cause the hands to not push the torso around and instead have the hips and torso follow the head.</p>
 <h2 id="normalize-pulling">Normalize Pulling</h2>
-<p>This checkbox is on by default. When on, you can grab all the effectors of a Power IK rig and move them in world space and the rig will follow the effectors precisely; not over or under shooting. The influence of the effectors on the bones is 'normalized'.</p>
-<p>But in some cases you do not want the influence of the effectors to act in this manner. You may want to control the influence more precisely by setting "Normalize Pulling" off. Now the effector will pull on the body proportional to the Pull Weight multiplied by the inverse distance to the body part.</p>
+<p>This checkbox is on by default. When on, the skeleton will move with the effectors completely; neither over or under shooting. The influence of the effectors on the bones is 'normalized'.</p>
+<p>But in some cases it may be desirable not to have normalized influence. Either because the character at large is moved by other means, or the desired behavior should be localized to some sub-section of the skeleton.</p>
+<p>More precise control over the influence can be achieved by setting "Normalize Pulling" to OFF. Now the effector will pull on the body proportional to the Pull Weight multiplied by the inverse distance to the body part.</p>
 <p>This is especially useful in conjuction with Positive and Negative Pull Factors.</p>
 <h2 id="positivenegative-pull-factors">Positive/Negative Pull Factors</h2>
-<p>The Positive and Negative Pull Factors give you two 3d vectors to allow scaling the influence of an effector along all three axes in both the positive and negative directions.</p>
+<p>The Positive and Negative Pull Factors supply two 3d vectors to allow scaling the influence of an effector along all three axes in both the positive and negative directions.</p>
 <p>Negative Pull Factors were used in the "Prone Mannequin" example to allow the mannequin to prefer reaching when tilted downwards, and lie flat when tilted upwards. This non-linear behavior is achieved by giving the hands a low negative pull factor in the Z direction (up/down). So the influence they have on the body is greater in the positive Z direction and less in the negative Z.</p>
 <h2 id="rotate-bone">Rotate Bone</h2>
 <p>Rotate Bone is checked off by default. When off, the bone will simply inherit the rotation of it's parent. When on, the bone matches the rotation of the effector.</p>
@@ -213,7 +227,9 @@
 <p>Rotate Limb is demonstrated on the hanging snake demo in the Unreal examples project.</p>
 <h2 id="alpha">Alpha</h2>
 <p>This value ranges from 0 to 1 and set to 1 by default. The Alpha value blends the influence of this effector on/off.</p>
-<p>This can be easier than blending the target transforms. For example, if you want to animate a character opening a door and set the effector position to the door knob, you can leave the effector position at the door knob and blend the alpha value on and off for the duration of the reach animation. This is easier than blending the target position.</p>
+<p>This can be easier than blending the target transforms. </p>
+<p>For example, to animate a character opening a door, the effector position may be left at the location of the door knob, and the alpha value may be blended off/on/off throughout the duration of the reach animation. </p>
+<p>This is easier than blending the target position.</p>
               
             </div>
           </div>
