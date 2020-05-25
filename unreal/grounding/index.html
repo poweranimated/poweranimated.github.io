@@ -182,6 +182,18 @@ Run solver using new effector locations
 </ol>
 <p>At this point, Power IK will stick the feet to the ground. Turning the Pull Weight off prevents the effector from yanking the body around while animating. Though for creatures with many limbs (like spiders), it may actually be nice to have the limbs pulling the body. For bipeds though, it is typically best to turn Pulling off and let the slope alignment settings move the hips for you.</p>
 <p><strong>Note:</strong> You will likely want to utilize <a href="../effector_smoothing">Effector Smoothing</a> when using IsGrounded. Otherwise legs can seemingly "pop" instantly ontop of obstacles.</p>
+<h3 id="setup-a-collision-trace-channel">Setup a Collision Trace Channel</h3>
+<p>You have to tell PowerIK what surfaces the ground rays should collide with. These settings may be project specific. For default Unreal settings, the following procedure should ensure correct collision filtering for Unreal characters with a capsule:</p>
+<ol>
+<li>In Unreal go to Edit &gt; Project Settings &gt; Collision</li>
+<li>Click New Trace Channel</li>
+<li>Name it IKTrace and set <em>Default Response</em> to <em>Block</em></li>
+<li>Open the Preset section of the Collision settings.</li>
+<li>Double-click <em>Pawn</em> and set IKTrace to <em>Ignore</em> then click Accept.</li>
+<li>Set the IKTrace to Ignore <em>Character Mesh</em> presets as well.</li>
+<li>Locate and select the Power IK Solver node and open the Details panel </li>
+<li>Open the Ground Settings Collision Channel and set it to: <em>IKTrace</em></li>
+</ol>
 <h3 id="now-tune-the-slope-settings">Now Tune the Slope Settings</h3>
 <ol>
 <li>Select the solver node and in the details pane find the Ground Slope section.</li>
