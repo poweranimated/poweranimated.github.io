@@ -54,6 +54,10 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ChangeLog</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#15-2020-jun-08">[1.5] - 2020-JUN-08</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#148-2020-may-31">[1.48] - 2020-MAY-31</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#147-2020-may-24">[1.47] - 2020-MAY-24</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#146-2020-may-18">[1.46] - 2020-MAY-18</a>
@@ -88,6 +92,8 @@
                 <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/old_versions/">Compiling for Old Unreal</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
     <ul>
@@ -187,6 +193,26 @@ Removed: now removed features.
 Fixed: any bug fixes.
 </code></pre>
 
+<h2 id="15-2020-jun-08">[1.5] - 2020-JUN-08</h2>
+<ul>
+<li>Added: New Power IK Ground anim graph node for simpler ground setup</li>
+<li>Added: PowerIKUnrealCore system to make building your own nodes easier</li>
+<li>Added: Debug drawing of ground raycast hit points and color coded rays</li>
+<li>Removed: "IsGrounded" bool from Power IK Effector</li>
+<li>Changed: All "grounded" examples now use Power IK Ground node</li>
+<li>Fixed: A lot of code cleanup and refactoring</li>
+</ul>
+<h2 id="148-2020-may-31">[1.48] - 2020-MAY-31</h2>
+<ul>
+<li>Added: SDK interface for adjusting skeleton before solve is run</li>
+<li>Added: SDK sample of procedural skeleton adjustment</li>
+<li>Added: SDK math functions MoveTowards, RotateTowards and PitchYawDecompose w/ comments</li>
+<li>Fixed: Bug, static foot offset did not follow foot normal</li>
+<li>Fixed: Bug, ground foot rotation was doubled up if RotateBone was off</li>
+<li>Changed: Default slope adjustment speed from 75 to 150</li>
+<li>Changed: Ground alignment code removed from core solver</li>
+<li>Removed: IsGrounded flag from interactive rig component, didn't make sense &amp; had bugs</li>
+</ul>
 <h2 id="147-2020-may-24">[1.47] - 2020-MAY-24</h2>
 <ul>
 <li>Fixed: Bug in core solver, effectors not keeping bones 100% stable</li>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Root Rotation - Power IK</title>
+  <title>Compiling for Old Unreal - Power IK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Root Rotation";
-    var mkdocs_page_input_path = "unreal\\root_rotation.md";
+    var mkdocs_page_name = "Compiling for Old Unreal";
+    var mkdocs_page_input_path = "unreal\\old_versions.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -59,10 +59,14 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../old_versions/">Compiling for Old Unreal</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Solver</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Compiling for Old Unreal</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#compile-for-older-unreal-versions">Compile for Older Unreal Versions</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
@@ -71,9 +75,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Root Rotation</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../root_rotation/">Root Rotation</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../center_of_gravity/">Center of Gravity</a>
                 </li>
@@ -142,15 +144,11 @@
     
       
         
-          <li>Solver &raquo;</li>
-        
-      
-        
           <li>Unreal Plugin &raquo;</li>
         
       
     
-    <li>Root Rotation</li>
+    <li>Compiling for Old Unreal</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -161,11 +159,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="root-rotation-multiplier">Root Rotation Multiplier</h1>
-<p>The Power IK solver has an attribute called <em>Root Rotation Multiplier</em>. The default value is 1.0 which causes the root bone to rotate a small amount in reaction to the movement of the effectors.</p>
-<p>In some cases, it may be preferrable to add more or less rotation on the root bone.</p>
-<p>For human characters, the pelvis can be quite loose and a value of 3.0 or more may be needed to get natural pelvis rotation when the feet and torso are being pulled.</p>
-<p><img alt="Set Roots" src="../img/solver_node/root_rot.png" /></p>
+                <h1 id="compiling-power-ik-for-old-unreal-versions">Compiling Power IK for Old Unreal Versions</h1>
+<p>The Power IK Unreal Plugin is currently only maintained on the latest version of Unreal (4.25 at time of writing). But it should be compatible with older versions of Unreal with minimal modifications.</p>
+<h2 id="compile-for-older-unreal-versions">Compile for Older Unreal Versions</h2>
+<p>To use PowerIK with an older version of Unreal, you need to add it to your project and recompile the plugin as part of your project. </p>
+<p>NOTE: First remove and Engine installations of PowerIK before proceeding, but simply deleting the PowerIK folder in the Engine plugin folder in Program Files.</p>
+<ol>
+<li>Add "PowerIK" plugin folder to <strong>YourProject/Plugins/</strong> </li>
+<li>Very the location of the .uplugin file is <strong>YourProject/Plugins/PowerIK/PowerIK.uplugin</strong></li>
+<li>Right click on <strong>YourProject.uproject</strong> and select <strong>Generate Visual Studio project files</strong></li>
+<li>Open <strong>YourProject.sln</strong></li>
+<li>Locate and open <strong>PowerIK.uplugin</strong> in the Solution Explorer</li>
+<li>Set the <strong>EngineVersion</strong> to <strong>"4.XX.X"</strong> (replacing X with your version)</li>
+<li>Build the solution and verify that PowerIK is working in your project.</li>
+</ol>
+<p><strong>NOTE:</strong> This process has been tested with 4.23 and 4.24. Older versions of Unreal may introduce minor changes in API that could require more work.</p>
+<p><strong>NOTE:</strong> At some point in the future, once development of PowerIK settles down, Power Animated may provide binary builds for previous versions.</p>
               
             </div>
           </div>
@@ -173,10 +182,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../center_of_gravity/" class="btn btn-neutral float-right" title="Center of Gravity">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../solver_setup/" class="btn btn-neutral float-right" title="Solver Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../limits/" class="btn btn-neutral" title="Limits and Stiffness"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../getting_started_unreal/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -202,10 +211,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../limits/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../getting_started_unreal/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../center_of_gravity/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../solver_setup/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
