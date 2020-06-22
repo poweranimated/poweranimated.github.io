@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Interactive Rig - Power IK</title>
+  <title>Control Rig - Power IK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Interactive Rig";
-    var mkdocs_page_input_path = "unreal\\interactive_rig.md";
+    var mkdocs_page_name = "Control Rig";
+    var mkdocs_page_input_path = "unreal\\control_rig.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -89,17 +89,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../control_rig/">Control Rig</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Interactive Rig</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Control Rig</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#power-ik-rig-actor-component">Power IK Rig Actor Component</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-setup-a-rig-component">How to Setup a Rig Component</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#interactive-rigs-at-runtime">Interactive Rigs at Runtime</a>
+    <li class="toctree-l2"><a class="reference internal" href="#video-tutorials">Video Tutorials</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
                     </li>
@@ -154,7 +150,7 @@
         
       
     
-    <li>Interactive Rig</li>
+    <li>Control Rig</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -165,58 +161,18 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="power-ik-interactive-rig-deprecated">Power IK Interactive Rig (DEPRECATED)</h1>
-<p><strong> DEPRECATED!!: As of Power IK v1.5, this component has been deprecated in favor of Control Rig. The interactive rig component was designed to give developers a means of interacting with rigs for debug purposes. The new Control Rig Power IK integration provides a much better user experience, allows interactive rigs to be animated and supports integration of the resulting rigs directly into an animation graph. </strong></p>
-<p>It is sometimes helpful to have an interactive rig with effectors that you can push and pull with your mouse. This is useful for testing your skeletons and poses with Power IK to see how they will be affected while prototyping a new behavior.</p>
-<p><img alt="Rig" src="../img/rig/spider_rig.gif" /></p>
-<h2 id="power-ik-rig-actor-component">Power IK Rig Actor Component</h2>
-<p>The Power IK plugin comes with an Actor Component that greatly simplifies the process of setting up an interactive rig. </p>
-<p>The Power IK Rig Actor Component creates a “gizmo” static mesh (tri-colored arrows showing the transform position and rotation) for each effector. When you “Eject”, while playing in-editor, the gizmos become selectable with the mouse. You can then translate and rotate them to interact with the rig.</p>
-<p><img alt="Eject" src="../img/rig/eject.png" /></p>
-<h2 id="how-to-setup-a-rig-component">How to Setup a Rig Component</h2>
+                <h1 id="control-rig-with-power-ik">Control Rig with Power IK</h1>
+<p>The Unreal Control Rig plugin allows the creation of user controlled animation rigs directly in the Unreal Editor. Control Rigs can be used to:</p>
 <ol>
-<li>
-<p>First we setup a blank actor class with just a Skeletal Mesh and a Power IK Rig component.</p>
-</li>
-<li>
-<p>Create a new Blueprint Class, select <em>Actor</em> as the Parent Class.</p>
-</li>
-<li>Open the new blueprint, click <em>Add Component</em> and select <em>Skeletal Mesh</em>.
-<img alt="Add Comp" src="../img/rig/add_comp.png" /></li>
-<li>Click <em>Add Component</em> and select <em>PowerIKRig</em></li>
-<li>Select the <em>Power IK Rig</em> component, click the “+” icon to add <em>Rig Effectors</em>.</li>
-<li>Type in the names of the bones you want to affect for each effector. For the Dino, we would use “heel_l” and “heel_r” to make an interactive rig to move his feet.
-<img alt="Add Comp" src="../img/rig/add_effectors.png" /></li>
+<li>Create keyframed animation sequences by animating "control" objects</li>
+<li>Create procedural effects that run in the Anim Graph using the Control Rig Anim Graph node</li>
 </ol>
-<p>This concludes the rig component setup. </p>
-<p>Now you have to setup an animation blueprint that gets a reference to the Power IK rig component, and uses the rig’s effectors to drive the Power IK solver.</p>
-<ol>
-<li>Create an <em>Animation Blueprint</em> asset for your Skeletal Mesh.</li>
-<li>Add a variable of type <em>Power IK Rig</em>. Name it "Rig".
-<img alt="Add Var" src="../img/rig/create_var.png" /></li>
-<li>In the event graph, get a reference to the Power IK Rig Component on <em>Begin Play</em> using the supplied function <em>Get Power IK Rig from ABP()</em>.
-<img alt="Get Rig" src="../img/rig/get_rig.png" /></li>
-<li>Drag the PowerIK Rig component reference into your Anim Graph. Drag a pin off the rig to call the function <em>Get Power IK Rig Effector()</em>.</li>
-<li>Set the Bone Name on each effector to the same names supplied to the Power IK Rig Component.</li>
-<li>Connect the effectors to a Power IK Solver node. Connect the input of the solver to a Mesh Space Ref Pose, and the output directly to the Output Pose node.
-<img alt="Get Rig" src="../img/rig/get_effectors.png" /></li>
-</ol>
-<p>That concludes the Animation Blueprint setup. Now, we need to add this animation blueprint and skeletal mesh to our actor blueprint.</p>
-<ol>
-<li>Open the actor blueprint class and select the Skeletal Mesh component.</li>
-<li>Set the Anim Class to the Animation Blueprint asset we just created.</li>
-<li>Set the Skeletal Mesh to the appropriate Skeletal Mesh asset.</li>
-<li>Compile and save the actor blueprint.</li>
-<li>Drag the actor into a level.</li>
-<li>Hit Play, then hit Eject.</li>
-</ol>
-<p>You should see gizmos at the effector locations. Select them with the mouse, hit “W” key to enter move mode and drag your rig interactively!</p>
-<p><strong>Important!</strong> 
-The effector gizmos use a translucent shader. In order to select them you must have <em>Allow Translucent Selection</em> turned on in the editor settings.
-<img alt="Translucent Mode Setting" src="../img/rig/trans_mode.png" /></p>
-<h2 id="interactive-rigs-at-runtime">Interactive Rigs at Runtime</h2>
-<p>There is obviously no "Eject" button in Shipping builds of Unreal. The Power IK Rig component is meant purely for debugging effector and solver settings.</p>
-<p>But you could easily replicate the Power IK Rig behavior at runtime if needed, using whatever user input you desire (touch, gesture, VR, etc). The Power IK Rig component drives effector positions in the same way that any procedural system would and in that way it acts as an example of how to create systems that drive Power IK.</p>
+<p>See the official <a href="https://docs.unrealengine.com/en-US/Engine/Animation/ControlRig/index.html">Control Rig Documentation</a> for more information.</p>
+<p>Power IK provides full access to the Power IK solver directly in a Control Rig graph. This allows for the creation of sophisticated full-body IK rigs that users can interact with, animate and even drive dynamically at run-time.</p>
+<h2 id="video-tutorials">Video Tutorials</h2>
+<p>The easiest way to understand how Control Rig works is to see it in action. Check out our two part tutorial series on using Control Rig with Power IK:</p>
+<p>In <a href="https://youtu.be/0_zuSWObXgY">Part 1</a>, we are given an overview of an advanced Spider rig in Control Rig that uses a layered Power IK setup to create an auto-additive thorax control complete with dynamics.</p>
+<p>In <a href="https://youtu.be/YFZhX9Rah58">Part 2</a>, we create a Spider Control Rig from scratch, add a root control and then rig up the legs to be controlled with Power IK.</p>
               
             </div>
           </div>
@@ -224,10 +180,10 @@ The effector gizmos use a translucent shader. In order to select them you must h
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../debugging/" class="btn btn-neutral float-right" title="Debugging">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../interactive_rig/" class="btn btn-neutral float-right" title="Interactive Rig">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../control_rig/" class="btn btn-neutral" title="Control Rig"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../grounding/" class="btn btn-neutral" title="Grounding"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -253,10 +209,10 @@ The effector gizmos use a translucent shader. In order to select them you must h
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../control_rig/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../grounding/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../debugging/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../interactive_rig/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

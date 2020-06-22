@@ -54,7 +54,7 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ChangeLog</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#15-2020-jun-08">[1.5] - 2020-JUN-08</a>
+    <li class="toctree-l2"><a class="reference internal" href="#150-2020-jun-08">[1.50] - 2020-JUN-08</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#148-2020-may-31">[1.48] - 2020-MAY-31</a>
     </li>
@@ -122,6 +122,8 @@
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/control_rig/">Control Rig</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/interactive_rig/">Interactive Rig</a>
                     </li>
@@ -193,14 +195,19 @@ Removed: now removed features.
 Fixed: any bug fixes.
 </code></pre>
 
-<h2 id="15-2020-jun-08">[1.5] - 2020-JUN-08</h2>
+<h2 id="150-2020-jun-08">[1.50] - 2020-JUN-08</h2>
 <ul>
-<li>Added: New Power IK Ground anim graph node for simpler ground setup</li>
-<li>Added: PowerIKUnrealCore system to make building your own nodes easier</li>
-<li>Added: Debug drawing of ground raycast hit points and color coded rays</li>
-<li>Removed: "IsGrounded" bool from Power IK Effector</li>
+<li>Added: New Power IK Control Rig integration</li>
+<li>Added: New Power IK Ground Node, dedicated node for simpler ground setup</li>
+<li>Added: New Pole Vector support on Power IK Effectors</li>
+<li>Added: New PowerIK_UnrealCore.h system to make building your own nodes easier</li>
+<li>Added: New Debug drawing of ground raycast hit points and color coded rays</li>
+<li>Removed: "IsGrounded" bool from Power IK Effector (use Ground node now)</li>
+<li>Changed: Pos/Neg Pull Factor default on Ground node set to 0, 0, 1</li>
 <li>Changed: All "grounded" examples now use Power IK Ground node</li>
-<li>Fixed: A lot of code cleanup and refactoring</li>
+<li>Fixed: Massive refactor of SDK and Plugin code to support rapid development</li>
+<li>Fixed: Bug in core solver, effectors on inner forks did not squash limbs correctly</li>
+<li>Deprecated: The Power IK Interactive Rig component (use Control Rig now)</li>
 </ul>
 <h2 id="148-2020-may-31">[1.48] - 2020-MAY-31</h2>
 <ul>

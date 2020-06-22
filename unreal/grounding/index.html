@@ -89,7 +89,47 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Grounding</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#video-tutorial">Video Tutorial</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-it-works">How it Works</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-setup-grounding">How to Setup Grounding</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-a-ground-node">Setup a Ground Node</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-delta-smooth-speed">(Optional) Delta Smooth Speed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-pull-weight-and-pull-factors">(Optional) Pull Weight and Pull Factors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-a-collision-trace-channel">Setup a Collision Trace Channel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#now-tune-the-slope-settings">Now Tune the Slope Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interactive-tuning">Interactive Tuning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#collision-settings">Collision Settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slope-alignment-settings">Slope Alignment Settings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#global-settings">Global Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stride-scaling">Stride Scaling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#leaning">Leaning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#counter-leaning">Counter Leaning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#root-offset">Root Offset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#foot-rotation">Foot Rotation</a>
+    </li>
+        </ul>
+    </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../control_rig/">Control Rig</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
                     </li>
@@ -158,32 +198,40 @@
             <div class="section">
               
                 <h1 id="grounding">Grounding</h1>
-<p>Power IK comes with built in grounding ability to contour your creatures to uneven terrain. </p>
-<p><strong>Note: This feature is in active development.</strong> Procedural leaning and stride adjustment will be available in a future release. The current version is great for creatures with 4 or more limbs, but you will not get proper heel placement in bipeds.</p>
+<p>Power IK comes with a dedicated Anim Graph node for contouring your creatures to uneven terrain. </p>
 <p><img alt="Ground" src="../img/ground/spider.gif" /></p>
-<h1 id="how-it-works">How it Works</h1>
-<p>Effector's have an IsGrounded flag that causes Power IK to stick the effector to the ground. This is useful for animating feet on uneven terrain.</p>
+<h2 id="video-tutorial">Video Tutorial</h2>
+<p>The easiest way to learn how to use the Ground Node is to <a href="https://youtu.be/g1FgBDIA2zA">see it in action in our video tutorial</a>. The video tutorial demonstrates the process of adding ground alignment to the Unreal 3rd person Mannequin.</p>
+<h2 id="how-it-works">How it Works</h2>
+<p>The Power IK Ground node uses the Power IK Solver to generate a new pose given updated foot positions that are on the ground.</p>
 <p>It helps to understand the basic algorithm for ground alignment:</p>
-<pre><code>For each effector that “Is Grounded”:
-    Calculate effector location in world space
+<pre><code>For each Foot:
+    Calculate foot location in world space
     Cast a ray from this location
     If ray hits collider:
-Smoothly move the effector towards hit point
+        Smoothly move the effector towards hit point
 Run solver using new effector locations
 </code></pre>
 
 <p>As you can see, because it is based on raycasts, you have to make sure that your collision filtering and level collision is setup to support good ground IK.</p>
 <h2 id="how-to-setup-grounding">How to Setup Grounding</h2>
-<h3 id="first-setup-a-solver-with-grounded-effectors">First Setup a Solver with Grounded Effectors</h3>
+<p>For a complete overview of the setup process for Power IK Ground Alignment, <a href="https://youtu.be/g1FgBDIA2zA">checkout the video tutorial</a>.</p>
+<h3 id="setup-a-ground-node">Setup a Ground Node</h3>
 <ol>
-<li>Create a <em>Power IK Solver</em> node with one effector for each “foot” to be grounded.</li>
-<li>Set <em>Bone Name</em> to the name of the foot bone.</li>
-<li>Check <em>IsGrounded</em> on.</li>
-<li>Set Pull Weight to 0.0</li>
-<li>Set Normalize Pulling to off.</li>
+<li>Create a <em>Power IK Ground</em> node.</li>
+<li>Select the node and open the Details section.</li>
+<li>Add to the <em>Feet</em> list and set <em>Bone Name</em> to the name of the foot bone.</li>
+<li>Set the Collision Trace Channel in the Ground Collision settings.</li>
 </ol>
-<p>At this point, Power IK will stick the feet to the ground. Turning the Pull Weight off prevents the effector from yanking the body around while animating. Though for creatures with many limbs (like spiders), it may actually be nice to have the limbs pulling the body. For bipeds though, it is typically best to turn Pulling off and let the slope alignment settings move the hips for you.</p>
-<p><strong>Note:</strong> You will likely want to utilize <a href="../effector_smoothing">Effector Smoothing</a> when using IsGrounded. Otherwise legs can seemingly "pop" instantly ontop of obstacles.</p>
+<p>At this point, Power IK will stick the feet to the ground. </p>
+<h3 id="optional-delta-smooth-speed">(Optional) Delta Smooth Speed</h3>
+<p>The Ground Node exposes the Delta Smooth Speed of the foot effectors. This value controls how quickly the feet adapt to changing terrain height (measured in cm/s). </p>
+<p>If you notice the feet gradually sliding towards the ground height, increase this value until it's no longer noticable. Typically values between 100 and 400 cm/s are suitable for this parameter.</p>
+<h3 id="optional-pull-weight-and-pull-factors">(Optional) Pull Weight and Pull Factors</h3>
+<p>Setting the Pull Factors in X and Y to zero (the default) prevents the effector from yanking the body around when the feet have to reach up or down a slope. </p>
+<p>If you set Z to zero as well, it will prevent the solver from pulling the hips of the character to reach for the ground. This could leave your character floating if the ground is far away from the capsule, though typically this never happens.</p>
+<p>For creatures with many limbs (like spiders), it may actually be nice to have the limbs pulling the body. For bipeds though, it is typically best to turn PullWeight off completely and let the slope alignment settings move the hips for you.</p>
+<p><strong>Note:</strong> If you notice the hips being yanked around by the feet, try adjusting the PullWeight and Pull Factors.</p>
 <h3 id="setup-a-collision-trace-channel">Setup a Collision Trace Channel</h3>
 <p>You have to tell PowerIK what surfaces the ground rays should collide with. These settings may be project specific. For default Unreal settings, the following procedure should ensure correct collision filtering for Unreal characters with a capsule:</p>
 <ol>
@@ -196,6 +244,7 @@ Run solver using new effector locations
 <li>Locate and select the Power IK Solver node and open the Details panel </li>
 <li>Open the Ground Settings Collision Channel and set it to: <em>IKTrace</em></li>
 </ol>
+<p><strong>Note:</strong> It may be necessary to also tell the Character capsule to ignore the IKTrace channel</p>
 <h3 id="now-tune-the-slope-settings">Now Tune the Slope Settings</h3>
 <ol>
 <li>Select the solver node and in the details pane find the Ground Slope section.</li>
@@ -323,7 +372,7 @@ Run solver using new effector locations
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../interactive_rig/" class="btn btn-neutral float-right" title="Interactive Rig">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../control_rig/" class="btn btn-neutral float-right" title="Control Rig">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../effector_smoothing/" class="btn btn-neutral" title="Effector Smoothing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -355,7 +404,7 @@ Run solver using new effector locations
         <span><a href="../effector_smoothing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../interactive_rig/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../control_rig/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

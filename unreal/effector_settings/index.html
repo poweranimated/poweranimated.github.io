@@ -107,6 +107,12 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#rotate-limb">Rotate Limb</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delta-smooth-speed">Delta Smooth Speed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#smoothing">Smoothing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pole-vector">Pole Vector</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#alpha">Alpha</a>
     </li>
     </ul>
@@ -116,6 +122,8 @@
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../control_rig/">Control Rig</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
                     </li>
@@ -232,6 +240,22 @@
 <h2 id="rotate-limb">Rotate Limb</h2>
 <p>Rotate Limb is off by default. When on, the effector rotation will be smoothly distributed up the limb. This is useful for spines and look-at behaviors. </p>
 <p>Rotate Limb is demonstrated on the hanging snake demo in the Unreal examples project.</p>
+<h2 id="delta-smooth-speed">Delta Smooth Speed</h2>
+<p>This value determines how quickly the Effector adapts to the position and rotation values coming into it in a way that does not dampen or lag the input animation.</p>
+<p>Internally, a delta between the animated position and the effector position is maintained across time. This delta is applied over time <em>on top of</em> the existing animation. This way large variations in the Effector input positions are applied gradually ontop of the input animation.</p>
+<h2 id="smoothing">Smoothing</h2>
+<p>Effector positions can be smoothed in world space to prevent sharp accelerations. See the page on <a href="/unreal/effector_smoothing">Effector Smoothing</a> for more details.</p>
+<h2 id="pole-vector">Pole Vector</h2>
+<p>So called <em>Pole Vectors</em> are used to provide explicit control over the orientation of limbs controlled by effectors. </p>
+<p><img alt="Space" src="../img/effectors/pole_vector.png" /></p>
+<p>You can control the rotation of limbs above an Effector using one of four modes:</p>
+<ol>
+<li>None: The limb will bend and rotate freely (this is the default).</li>
+<li>Character Space Position: This uses the input vector to supply a location in Character Space that represents the direction the limb should aim at. The angle of the limb is recorded relative to this position when the solver is initialized, so only <em>changes</em> in this position will cause the limb to rotate.</li>
+<li>Bone: Works identically to the Character Space Position setting except the position is derived directly from another bone in the skeleton. This is useful if you want to animate the pole vector location in a content creation package (like Maya) and use that in the game.</li>
+<li>Float Angle Offset: This uses the Angle Offset float parameter to rotate the limb by an angle. This can be useful if you need to nudge the limb inwards or outwards.</li>
+</ol>
+<p><strong>Note</strong>: As of v1.5, the Pole Vector features are brand new and thus considered experimental. While there are no known issues, it has not been thoroughly tested yet. Please report any issues to support@poweranimated.com.</p>
 <h2 id="alpha">Alpha</h2>
 <p>This value ranges from 0 to 1 and set to 1 by default. The Alpha value blends the influence of this effector on/off.</p>
 <p>This can be easier than blending the target transforms. </p>
