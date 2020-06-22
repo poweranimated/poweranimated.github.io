@@ -111,10 +111,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#collision-settings">Collision Settings</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#slope-alignment-settings">Slope Alignment Settings</a>
+    <li class="toctree-l2"><a class="reference internal" href="#slope-settings">Slope Settings</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#global-settings">Global Settings</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#stride-scaling">Stride Scaling</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#leaning">Leaning</a>
@@ -124,6 +122,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#root-offset">Root Offset</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#foot-rotation">Foot Rotation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#foot-offset">Foot Offset</a>
     </li>
         </ul>
     </li>
@@ -223,7 +223,10 @@ Run solver using new effector locations
 <li>Add to the <em>Feet</em> list and set <em>Bone Name</em> to the name of the foot bone.</li>
 <li>Set the Collision Trace Channel in the Ground Collision settings.</li>
 </ol>
-<p>At this point, Power IK will stick the feet to the ground. </p>
+<p><img alt="Ground" src="../img/ground/ground_node.png" /></p>
+<p>At this point, Power IK will stick the feet to the ground.</p>
+<p>The following settings can be used to tune the Ground alignment behavior. Many of these settings are identical to the Power IK Solver settings (since the Ground node is just a different wrapper around the core solver).</p>
+<p><img alt="Ground" src="../img/ground/ground_settings.png" /></p>
 <h3 id="optional-delta-smooth-speed">(Optional) Delta Smooth Speed</h3>
 <p>The Ground Node exposes the Delta Smooth Speed of the foot effectors. This value controls how quickly the feet adapt to changing terrain height (measured in cm/s). </p>
 <p>If you notice the feet gradually sliding towards the ground height, increase this value until it's no longer noticable. Typically values between 100 and 400 cm/s are suitable for this parameter.</p>
@@ -255,7 +258,7 @@ Run solver using new effector locations
 <p>You can adjust the slope settings interactively while playing in editor. Simply open the Animation Blueprint, select your character and adjust the slope settings. You must Compile the animation blueprint between parameter adjustements to see the effect while playing in editor. </p>
 <p>It can be useful to place a cube underneath your character that you can rotate freely as you tune slope settings interactively. </p>
 <h2 id="collision-settings">Collision Settings</h2>
-<p><img alt="Solver Node" src="../img/solver_node/ground_settings.png" /></p>
+<p><img alt="Ground Settings" src="../img/ground/ground_collision.png" /></p>
 <p>All the Grounding settings are found by selecting the solver node and opening the details panel:</p>
 <ul>
 <li><strong>Ground Plane Bone</strong>: the name of the bone that represents the “ground plane” in your animation. Typically this is just the root bone, but you can use a separate bone if you want. The height of the effector relative to this plane is always maintained. So if the animation pulls the characters foot 10cm above the ground plane, then the foot will be 10cm above the ray cast hit location.</li>
@@ -264,8 +267,8 @@ Run solver using new effector locations
 <li><strong>Ray Cast Up</strong>: the distance in centimeters to cast upwards looking for terrain to stand on.</li>
 <li><strong>Ray Cast Down</strong>: the distance in centimeters to cast downwards looking for terrain to stand on.</li>
 </ul>
-<h2 id="slope-alignment-settings">Slope Alignment Settings</h2>
-<h3 id="global-settings">Global Settings</h3>
+<h2 id="slope-settings">Slope Settings</h2>
+<p><img alt="Slope Settings" src="../img/ground/ground_slope.png" /></p>
 <ul>
 <li><strong>Vec3 StrideDirection:</strong> Normalized vector that describes the direction of travel. This vector points in the forward facing direction of your character and usually remains constant.</li>
 <li><strong>MaxGroundAngle:</strong> Maximum angle relative to gravity vector to apply leaning and stride scaling.</li>
@@ -364,6 +367,13 @@ Run solver using new effector locations
 <li>
 <p><strong>RollFootAmount float:</strong> Amount to roll foot to orient to sidehills. Range is 0-1. Default 0.6.</p>
 </li>
+</ul>
+<h3 id="foot-offset">Foot Offset</h3>
+<p>The Foot Offset feature is useful for nudging feet in the direction of the ground normal so that they come into contact with the ground surface precisely. </p>
+<p>By default, Power IK maintains the distance of the foot bone relative to the XY plane. Applying an offset may be necessary if the character was not modeled to stand exactly on this plane in the reference pose.</p>
+<ul>
+<li><strong>Offset Feet Positions bool:</strong> If True, feet positions are offset in direction of ground normal.</li>
+<li><strong>Static Foot Offset float:</strong> Amount in centimeters to push feet in direction of ground normal.</li>
 </ul>
               
             </div>

@@ -106,6 +106,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#unreal-integration-example">Unreal Integration Example</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#install-the-sdk">Install the SDK</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a>
@@ -182,6 +184,9 @@
 <li>robotics</li>
 </ul>
 <p>Power IK is commercially licensed priorietary software. To enquire about licensing our SDK, please contact support@poweranimated.com.</p>
+<h2 id="unreal-integration-example">Unreal Integration Example</h2>
+<p>The best example of how to integrate Power IK can be found right in the default Unreal integration. We have created a class that wraps the SDK and allows rapid integration of the solver into multiple Anim Graph nodes, and also into Unreal's Control Rig plugin.</p>
+<p>See PowerIK_UnrealCore.h for an example Solver wrapper. Clients looking to integrate PowerIK into their own systems should reference this class to observe the necessary parts required to interface with the Power IK solver core.</p>
 <h2 id="install-the-sdk">Install the SDK</h2>
 <ol>
 <li>Copy the entire SDK folder into a suitable location in the project directory.</li>

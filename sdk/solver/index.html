@@ -108,50 +108,6 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Solver Class</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#class-powerik_lib_api-solver">class POWERIK_LIB_API Solver</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#solver">Solver()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-solveconst-float-deltatime-const-float-alpha">void Solve(const float DeltaTime, const float Alpha)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-reset">void Reset()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setnumbonesint-numbones">void SetNumBones(int NumBones)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#int-getnumbones">int GetNumBones()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-addbone-const-int-index-const-char-bonename-const-int-parentindex">void AddBone(   const int Index,   const char* BoneName,   const int ParentIndex)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#int-addeffectorconst-char-bonename">int AddEffector(const char* BoneName)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setrootboneconst-int-boneindex">void SetRootBone(const int BoneIndex)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#const-char-getrootbonename">const char* GetRootBoneName()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setsolversettingsconst-solversettings-settings">void SetSolverSettings(const SolverSettings&amp; Settings)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setcogsettingsconst-centerofgravitysettings-settings">void SetCOGSettings(const CenterOfGravitySettings&amp; Settings)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setgroundsettingsconst-groundsettings-settings">void SetGroundSettings(const GroundSettings&amp; Settings)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setbonetransform-const-int-index-const-vec3-position-const-quat-rotation">void SetBoneTransform(   const int Index,   const Vec3&amp; Position,   const Quat&amp; Rotation)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-getbonetransform-const-int-index-vec3-outposition-quat-outrotation">void GetBoneTransform(   const int Index,   Vec3&amp; OutPosition,   Quat&amp; OutRotation)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectortransform-const-int-index-const-vec3-position-const-quat-rotation-const-bool-isadditive-const-bool-rotatebone-const-bool-rotatelimb">void SetEffectorTransform(   const int Index,   const Vec3&amp; Position,   const Quat&amp; Rotation,   const bool IsAdditive,   const bool RotateBone,   const bool RotateLimb)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectorweights-const-int-index-const-float-alpha-const-float-pullweight-const-bool-normalizepulling-const-vec3-positivepullfactor-const-vec3-negativepullfactor">void SetEffectorWeights(   const int Index,   const float Alpha,   const float PullWeight,   const bool NormalizePulling,   const Vec3&amp; PositivePullFactor,   const Vec3&amp; NegativePullFactor)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectorsettings-const-int-index-const-bool-isgrounded-const-bool-affectscenterofgravity">void SetEffectorSettings(   const int Index,   const bool IsGrounded,   const bool AffectsCenterOfGravity)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-seteffectorsmoothing-const-int-index-const-effectorsmoothingsettings-settings">void SetEffectorSmoothing(   const int Index,   const EffectorSmoothingSettings&amp; Settings)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setbonebenddirection-const-int-index-const-vec3-direction">void SetBoneBendDirection(   const int Index,   const Vec3&amp; Direction)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#void-setbonelimits-const-int-index-const-float-stiffness-const-bool-uselimits-const-vec3-minangles-const-vec3-maxangles-const-bool-negatexaxis">void SetBoneLimits(   const int Index,   const float Stiffness,   const bool UseLimits,   const Vec3&amp; MinAngles,   const Vec3&amp; MaxAngles,   const bool NegateXAxis)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#bool-getbonelimits-const-int-index-vec3-outminlimits-vec3-outmaxlimits-bool-outnegatexaxis">bool GetBoneLimits(   const int Index,   Vec3&amp; OutMinLimits,   Vec3&amp; OutMaxLimits,   bool&amp; OutNegateXAxis)</a>
-    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Settings</a>
@@ -204,142 +160,190 @@
             <div class="section">
               
                 <h1 id="poweriksolver-class">PowerIK::Solver Class</h1>
-<h2 id="class-powerik_lib_api-solver"><code>class POWERIK_LIB_API Solver</code></h2>
-<p>The core solver class for PowerIK.</p>
+<h1 id="documentation">Documentation</h1>
 <h2 id="solver"><code>Solver()</code></h2>
 <p>Creates a new instance of a PowerIK solver. Do this once per animated skeleton.</p>
-<h2 id="void-solveconst-float-deltatime-const-float-alpha"><code>void Solve(const float DeltaTime, const float Alpha)</code></h2>
+<h2 id="void-solveconst-float-deltatime-const-float-alpha-const"><code>void Solve(const float DeltaTime, const float Alpha) const</code></h2>
 <p>Call this every tick to generate a new pose based on the input pose and the effectors.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
 <li><code>DeltaTime</code> — - the time (in seconds since the last call to Solve(). PowerIK is deterministic, this is only needed for effector smoothing.</li>
 <li><code>Alpha</code> — - blend the entire effect of the solver off and on (0-1). At 0, the solve is skipped entirely and the input pose is completely unchanged.</li>
 </ul>
-<h2 id="void-reset"><code>void Reset()</code></h2>
+<h2 id="void-reset-const"><code>void Reset() const</code></h2>
 <p>Call this to reset all internal data structures. Will not deallocate. Useful for recycling solver memory.</p>
-<h2 id="void-setnumbonesint-numbones"><code>void SetNumBones(int NumBones)</code></h2>
+<h2 id="void-setnumbonesint-numbones-const"><code>void SetNumBones(int NumBones) const</code></h2>
 <p>Call this on a new Solver() or only AFTER calling Reset() to expand/allocate space for a new skeleton.</p>
-<h2 id="int-getnumbones"><code>int GetNumBones()</code></h2>
-<p>Get how many bones have been added to the Solver.</p>
-<h2 id="void-addbone-const-int-index-const-char-bonename-const-int-parentindex"><code>void AddBone(   const int Index,   const char* BoneName,   const int ParentIndex)</code></h2>
+<h2 id="int-getnumbones-const"><code>int GetNumBones() const</code></h2>
+<ul>
+<li><strong>Returns:</strong> - int, number of bones in the solver</li>
+</ul>
+<h2 id="powerikerrorcode-addbone-const-int-boneindex-const-char-bonename-const-int-parentindex-const"><code>PowerIKErrorCode AddBone(   const int BoneIndex,   const char* BoneName,   const int ParentIndex) const</code></h2>
 <p>Call this for each bone AFTER calling SetNumBones(). Supplies hierarchy information to solver.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
+<li><code>BoneIndex</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
 <li><code>BoneName</code> — - the string name of the Bone. This name must match the name passed to AddEffector()</li>
 <li><code>ParentIndex</code> — - the index of the bone this bone is parented to or -1 for the root (no parent).</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if either BoneIndex or ParentIndex are invalid</li>
 </ul>
-<h2 id="int-addeffectorconst-char-bonename"><code>int AddEffector(const char* BoneName)</code></h2>
+<h2 id="powerikerrorcode-addeffector-const-char-bonename-int-outeffectorindex-const"><code>PowerIKErrorCode AddEffector(   const char* BoneName,   int&amp; OutEffectorIndex) const</code></h2>
 <p>Call this AFTER called AddBone() for the whole skeleton. Adds an effector to a given bone (by name).</p>
 <ul>
-<li><strong>Parameters:</strong> <code>BoneName</code> — - the string name of the Bone to affect. This name must match the name passed to AddBone().</li>
-<li><strong>Returns:</strong> - the index of the newly created effector. Store this and use it in SetEffectorTransform()</li>
+<li><strong>Parameters:</strong></li>
+<li><code>BoneName</code> — - the string name of the Bone to affect. This name must match the name passed to AddBone().</li>
+<li><code>OutEffectorIndex</code> — - the index of the newly created effector. Store this and use it in SetEffectorTransform()</li>
+<li><strong>Returns:</strong> - SUCCESS or FAILURE if BoneName is invalid</li>
 </ul>
-<h2 id="void-setrootboneconst-int-boneindex"><code>void SetRootBone(const int BoneIndex)</code></h2>
+<h2 id="int-getnumeffectors-const"><code>int GetNumEffectors() const</code></h2>
+<p>Get how many effectors have been added to the solver.</p>
+<ul>
+<li><strong>Returns:</strong> - int, number of effectors in the solver</li>
+</ul>
+<h2 id="const-char-geteffectornameconst-unsigned-int-effectorindex"><code>const char* GetEffectorName(const unsigned int EffectorIndex)</code></h2>
+<p>Get name of the bone associated with the given effector.</p>
+<ul>
+<li><strong>Returns:</strong> - a pointer to array of char holding the name of the bone for the effector. Returns empty string if index is out of range.</li>
+</ul>
+<h2 id="powerikerrorcode-setrootboneconst-int-boneindex-const"><code>PowerIKErrorCode SetRootBone(const int BoneIndex) const</code></h2>
 <p>Tell the solver what the root bone is. All bones ABOVE the root are culled from the solver entirely.</p>
 <ul>
 <li><strong>Parameters:</strong> <code>BoneIndex</code> — - all of the ground settings</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if BoneIndex is invalid</li>
 </ul>
-<h2 id="const-char-getrootbonename"><code>const char* GetRootBoneName()</code></h2>
+<h2 id="const-char-getrootbonename-const"><code>const char* GetRootBoneName() const</code></h2>
 <p>Get name of the currently set root bone.</p>
 <ul>
 <li><strong>Returns:</strong> - a pointer to array of char holding the name of the root bone. Returns empty string if no root has been set.</li>
 </ul>
-<h2 id="void-setsolversettingsconst-solversettings-settings"><code>void SetSolverSettings(const SolverSettings&amp; Settings)</code></h2>
+<h2 id="void-setsolversettingsconst-solversettings-settings-const"><code>void SetSolverSettings(const SolverSettings&amp; Settings) const</code></h2>
 <p>Optional method to modify internal solver settings like iteration counts.</p>
 <ul>
 <li><strong>Parameters:</strong> <code>Settings</code> — - all the solver settings</li>
 </ul>
-<h2 id="void-setcogsettingsconst-centerofgravitysettings-settings"><code>void SetCOGSettings(const CenterOfGravitySettings&amp; Settings)</code></h2>
+<h2 id="void-setcogsettingsconst-centerofgravitysettings-settings-const"><code>void SetCOGSettings(const CenterOfGravitySettings&amp; Settings) const</code></h2>
 <p>Optional method to setup Center of Gravity constraint on root bone.</p>
 <ul>
 <li><strong>Parameters:</strong> <code>Settings</code> — - all of the center of gravity settings</li>
 </ul>
-<h2 id="void-setgroundsettingsconst-groundsettings-settings"><code>void SetGroundSettings(const GroundSettings&amp; Settings)</code></h2>
-<p>Optional method to setup Ground settings. Only used if IsGrounded is True on an Effector.</p>
-<ul>
-<li><strong>Parameters:</strong> <code>Settings</code> — - all of the ground settings</li>
-</ul>
-<h2 id="void-setbonetransform-const-int-index-const-vec3-position-const-quat-rotation"><code>void SetBoneTransform(   const int Index,   const Vec3&amp; Position,   const Quat&amp; Rotation)</code></h2>
+<h2 id="void-setbonetransform-const-int-boneindex-const-vec3-position-const-quat-rotation-const"><code>void SetBoneTransform(   const int BoneIndex,   const Vec3&amp; Position,   const Quat&amp; Rotation) const</code></h2>
 <p>Call this every tick, for each bone, before Solve() to update the input pose.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
+<li><code>BoneIndex</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
 <li><code>Position</code> — - the Character Space 3d position of the bone</li>
 <li><code>Rotation</code> — - the Character Space rotation of the bone as a quaternion</li>
 </ul>
-<h2 id="void-getbonetransform-const-int-index-vec3-outposition-quat-outrotation"><code>void GetBoneTransform(   const int Index,   Vec3&amp; OutPosition,   Quat&amp; OutRotation)</code></h2>
+<h2 id="void-getbonetransform-const-int-boneindex-vec3-outposition-quat-outrotation-const"><code>void GetBoneTransform(   const int BoneIndex,   Vec3&amp; OutPosition,   Quat&amp; OutRotation) const</code></h2>
 <p>Call this every tick, for each bone, AFTER Solve() to get the generated output pose.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
-<li><code>Position</code> — - the Character Space 3d position of the bone</li>
-<li><code>Rotation</code> — - the Character Space rotation of the bone as a quaternion</li>
+<li><code>BoneIndex</code> — - the index of the bone. Index must be &gt;= 0 and less than NumBones.</li>
+<li><code>OutPosition</code> — - the Character Space 3d position of the bone</li>
+<li><code>OutRotation</code> — - the Character Space rotation of the bone as a quaternion</li>
 </ul>
-<h2 id="void-seteffectortransform-const-int-index-const-vec3-position-const-quat-rotation-const-bool-isadditive-const-bool-rotatebone-const-bool-rotatelimb"><code>void SetEffectorTransform(   const int Index,   const Vec3&amp; Position,   const Quat&amp; Rotation,   const bool IsAdditive,   const bool RotateBone,   const bool RotateLimb)</code></h2>
+<h2 id="powerikerrorcode-seteffectortransform-const-int-effectorindex-const-vec3-position-const-quat-rotation-const-bool-rotatebone-const-bool-rotatelimb-const"><code>PowerIKErrorCode SetEffectorTransform(   const int EffectorIndex,   const Vec3&amp; Position,   const Quat&amp; Rotation,   const bool RotateBone,   const bool RotateLimb) const</code></h2>
 <p>Optionally call this every tick, for each effector, before Solve() to update the effector transform settings.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>EffectorIndex</code> — - the index of the effector (as returned from AddEffector)</li>
 <li><code>Position</code> — - the Character Space 3d position of the effector</li>
 <li><code>Rotation</code> — - the Character Space rotation of the effector as a quaternion</li>
-<li><code>IsAdditive</code> — - if True, Position and Rotation are considered relative to input pose of bone</li>
 <li><code>RotateBone</code> — - if True, affected Bone will rotate to match effector rotation</li>
 <li><code>RotateLimb</code> — - if True, Bones near this effector will be rotated with the effector</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if EffectorIndex is invalid</li>
 </ul>
-<h2 id="void-seteffectorweights-const-int-index-const-float-alpha-const-float-pullweight-const-bool-normalizepulling-const-vec3-positivepullfactor-const-vec3-negativepullfactor"><code>void SetEffectorWeights(   const int Index,   const float Alpha,   const float PullWeight,   const bool NormalizePulling,   const Vec3&amp; PositivePullFactor,   const Vec3&amp; NegativePullFactor)</code></h2>
+<h2 id="powerikerrorcode-seteffectorweights-const-int-effectorindex-const-float-alpha-const-float-pullweight-const-bool-normalizepulling-const-vec3-positivepullfactor-const-vec3-negativepullfactor-const"><code>PowerIKErrorCode SetEffectorWeights(   const int EffectorIndex,   const float Alpha,   const float PullWeight,   const bool NormalizePulling,   const Vec3&amp; PositivePullFactor,   const Vec3&amp; NegativePullFactor) const</code></h2>
 <p>Optionally call this every tick, for each effector, before Solve() to update the effector weight settings.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>EffectorIndex</code> — - the index of the effector (as returned from AddEffector)</li>
 <li><code>Alpha</code> — - used to blend the effect of the effector on/off. Ranges from 0 to 1.</li>
 <li><code>PullWeight</code> — - determines the degree of effect this effector has on the rest of the body. Normalized relative to all other PullWeight values.</li>
 <li><code>NormalizePulling</code> — - if True, total PullWeight on body is normalized to 1 to avoid over/under shooting.</li>
 <li><code>PositivePullFactor</code> — - multiplies effect of this effector on the rest of the body in the positive directions</li>
 <li><code>NegativePullFactor</code> — - multiplies effect of this effector on the rest of the body in the negative directions</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if EffectorIndex is invalid</li>
 </ul>
-<h2 id="void-seteffectorsettings-const-int-index-const-bool-isgrounded-const-bool-affectscenterofgravity"><code>void SetEffectorSettings(   const int Index,   const bool IsGrounded,   const bool AffectsCenterOfGravity)</code></h2>
+<h2 id="powerikerrorcode-seteffectorsettings-const-int-effectorindex-const-float-deltasmoothspeed-const-bool-affectscenterofgravity-const"><code>PowerIKErrorCode SetEffectorSettings(   const int EffectorIndex,   const float DeltaSmoothSpeed,   const bool AffectsCenterOfGravity) const</code></h2>
 <p>Optionally call this every tick, for each effector, before Solve() to update the effector weight settings.</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
-<li><code>IsGrounded</code> — - multiplies effect of this effector on the rest of the body in the positive directions</li>
+<li><code>EffectorIndex</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>DeltaSmoothSpeed</code> — - speed in centimeters per second that this effector adjusts to changing ground height.</li>
 <li><code>AffectsCenterOfGravity</code> — - multiplies effect of this effector on the rest of the body in the negative directions</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if EffectorIndex is invalid</li>
 </ul>
-<h2 id="void-seteffectorsmoothing-const-int-index-const-effectorsmoothingsettings-settings"><code>void SetEffectorSmoothing(   const int Index,   const EffectorSmoothingSettings&amp; Settings)</code></h2>
+<h2 id="powerikerrorcode-seteffectorsmoothing-const-int-effectorindex-const-effectorsmoothingsettings-settings-const"><code>PowerIKErrorCode SetEffectorSmoothing(   const int EffectorIndex,   const EffectorSmoothingSettings&amp; Settings) const</code></h2>
 <p>Optionally call this to smooth an effector's position and/or rotation over time</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>EffectorIndex</code> — - the index of the effector (as returned from AddEffector)</li>
 <li><code>Settings</code> — - the position and rotation smoothing settings</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if EffectorIndex is invalid</li>
 </ul>
-<h2 id="void-setbonebenddirection-const-int-index-const-vec3-direction"><code>void SetBoneBendDirection(   const int Index,   const Vec3&amp; Direction)</code></h2>
+<h2 id="powerikerrorcode-seteffectorpolevector-const-int-effectorindex-const-effectorpolevector-polevector-const"><code>PowerIKErrorCode SetEffectorPoleVector(   const int EffectorIndex,   const EffectorPoleVector&amp; PoleVector) const</code></h2>
+<p>Optionally call this to specify an Effector's pole vector settings</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>EffectorIndex</code> — - the index of the effector (as returned from AddEffector)</li>
+<li><code>PoleVector</code> — - the settings defining the Pole Vector behavior</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if EffectorIndex is invalid</li>
+</ul>
+<h2 id="powerikerrorcode-setbonebenddirection-const-int-boneindex-const-vec3-direction-const"><code>PowerIKErrorCode SetBoneBendDirection(   const int BoneIndex,   const Vec3&amp; Direction) const</code></h2>
 <p>Optionally call this to specify a custom bending direction for a single bone</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the bone (as returned from AddBone)</li>
+<li><code>BoneIndex</code> — - the index of the bone (as passed to AddBone)</li>
 <li><code>Direction</code> — - a 3d vector in the local space of the bone that is the direction the bone will move in when bending</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if BoneIndex is invalid</li>
 </ul>
-<h2 id="void-setbonelimits-const-int-index-const-float-stiffness-const-bool-uselimits-const-vec3-minangles-const-vec3-maxangles-const-bool-negatexaxis"><code>void SetBoneLimits(   const int Index,   const float Stiffness,   const bool UseLimits,   const Vec3&amp; MinAngles,   const Vec3&amp; MaxAngles,   const bool NegateXAxis)</code></h2>
+<h2 id="powerikerrorcode-setbonelimits-const-int-boneindex-const-float-stiffness-const-bool-uselimits-const-vec3-minangles-const-vec3-maxangles-const-bool-negatexaxis-const"><code>PowerIKErrorCode SetBoneLimits(   const int BoneIndex,   const float Stiffness,   const bool UseLimits,   const Vec3&amp; MinAngles,   const Vec3&amp; MaxAngles,   const bool NegateXAxis) const</code></h2>
 <p>EXPERIMENTAL! Optionally call this to specify a set of limits and stiffness for a bone</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the bone (as returned from AddBone)</li>
+<li><code>BoneIndex</code> — - the index of the bone (as passed to AddBone)</li>
 <li><code>Stiffness</code> — - ranges from 0 to 1. Default is 0. At 1 the bone is completely rigid and will be removed from the solve entirely.</li>
 <li><code>UseLimits</code> — - turn limits on/off.</li>
 <li><code>MinAngles</code> — - minimum allowable X, Y and Z rotations relative to parent</li>
 <li><code>MaxAngles</code> — - maximum allowable X, Y and Z rotations relative to parent</li>
 <li><code>NegateXAxis</code> — - consider limits in opposite direction along X-axis</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if BoneIndex is invalid</li>
 </ul>
-<h2 id="bool-getbonelimits-const-int-index-vec3-outminlimits-vec3-outmaxlimits-bool-outnegatexaxis"><code>bool GetBoneLimits(   const int Index,   Vec3&amp; OutMinLimits,   Vec3&amp; OutMaxLimits,   bool&amp; OutNegateXAxis)</code></h2>
+<h2 id="powerikerrorcode-getbonelimits-const-int-boneindex-vec3-outminlimits-vec3-outmaxlimits-bool-outnegatexaxis-bool-haslimits-const"><code>PowerIKErrorCode GetBoneLimits(   const int BoneIndex,   Vec3&amp; OutMinLimits,   Vec3&amp; OutMaxLimits,   bool&amp; OutNegateXAxis,   bool&amp; HasLimits) const</code></h2>
 <p>Optionally call this to get the limits for a bone. If the bone has no limits</p>
 <ul>
 <li><strong>Parameters:</strong></li>
-<li><code>Index</code> — - the index of the bone (as returned from AddBone)</li>
+<li><code>BoneIndex</code> — - the index of the bone</li>
 <li><code>OutMinLimits</code> — - minimum allowable X, Y and Z rotations relative to parent</li>
 <li><code>OutMaxLimits</code> — - maximum allowable X, Y and Z rotations relative to parent</li>
 <li><code>OutNegateXAxis</code> — - consider limits in opposite direction along X-axis</li>
-<li><strong>Returns:</strong> - True if the bone has limits, false otherwise (all Out values will be untouched)</li>
+<li><code>HasLimits</code> — - True if the bone has limits, false otherwise (all Out values will be untouched)</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if BoneIndex is invalid</li>
+</ul>
+<h2 id="powerikerrorcode-excludeboneconst-int-boneindex-const"><code>PowerIKErrorCode ExcludeBone(const int BoneIndex) const</code></h2>
+<p>Exclude the given bone. It will be treated as 100% stiff and the solver will ignore it.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>BoneIndex</code> — - the index of the bone (as passed to AddBone)</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if BoneIndex is invalid</li>
+</ul>
+<h2 id="void-translateskeletonbeforesolveconst-vec3-positionoffset-const"><code>void TranslateSkeletonBeforeSolve(const Vec3&amp; PositionOffset) const</code></h2>
+<p>Convenience method for providing global offsets to the skeleton to be applied internally before the main solver pass.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>PositionOffset</code> — - the amount to translate the entire skeleton</li>
+</ul>
+<h2 id="void-rotateskeletonbeforesolveconst-quat-rotationoffset-const"><code>void RotateSkeletonBeforeSolve(const Quat&amp; RotationOffset) const</code></h2>
+<p>Convenience method for providing global offsets to the skeleton to be applied internally before the main solver pass.</p>
+<ul>
+<li><strong>Parameters:</strong> <code>RotationOffset</code> — - the amount to rotate the entire skeleton</li>
+</ul>
+<h2 id="powerikerrorcode-rotatebonebeforesolve-const-quat-rotationoffset-const-int-boneindex-const"><code>PowerIKErrorCode RotateBoneBeforeSolve(   const Quat&amp; RotationOffset,   const int BoneIndex) const</code></h2>
+<p>Convenience method for providing local rotate offsets to specific bones to be applied internally before the main solver pass.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>RotationOffset</code> — - character space rotation offset applied relative to input pose</li>
+<li><code>BoneIndex</code> — - the index of the bone (as passed to AddBone)</li>
+<li><strong>Returns:</strong> - SUCCESS or OUT_OF_BOUNDS if BoneIndex is invalid</li>
 </ul>
               
             </div>
