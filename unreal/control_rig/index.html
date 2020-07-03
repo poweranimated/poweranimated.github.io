@@ -93,6 +93,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#video-tutorials">Video Tutorials</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-drive-control-rigs-at-runtime">How to Drive Control Rigs At Runtime</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
@@ -173,6 +175,23 @@
 <p>The easiest way to understand how Control Rig works is to see it in action. Check out our two part tutorial series on using Control Rig with Power IK:</p>
 <p>In <a href="https://youtu.be/0_zuSWObXgY">Part 1</a>, we are given an overview of an advanced Spider rig in Control Rig that uses a layered Power IK setup to create an auto-additive thorax control complete with dynamics.</p>
 <p>In <a href="https://youtu.be/YFZhX9Rah58">Part 2</a>, we create a Spider Control Rig from scratch, add a root control and then rig up the legs to be controlled with Power IK.</p>
+<h2 id="how-to-drive-control-rigs-at-runtime">How to Drive Control Rigs At Runtime</h2>
+<p>Control Rig assets can be used to perform an operation on an input pose, to produce a new output pose. You can embed them in Unreal's Anim Graph do to procedural modifications using Vector or float variables.</p>
+<p>Vector variables may come from other Components, Event Graphs or blueprint logic. You can use normal Control rig "Controls" for debugging, testing and keyframe animation. When you want to drive an effect procedurally from gameplay code or blueprint, convert the Effector inputs to parameters and expose them using this method.</p>
+<p>Open a <strong>Control Rig blueprint</strong>:</p>
+<ol>
+<li>Right-click in the Rig Graph and get a variable of type "vector".</li>
+<li>Plug the vector parameter into an effector position.</li>
+<li>Name the vector parameter.</li>
+</ol>
+<p>Now open an <strong>Anim Graph</strong>:</p>
+<ol>
+<li>Create a Control Rig node.</li>
+<li>Set the <em>class</em> to the Control Rig blueprint.</li>
+<li>Observe the named blueprint parameters in the details.</li>
+<li>Click the <em>Use Pin</em> checkbox to expose the parameter as a pin.</li>
+<li>Connect a Vector variable to the Anim Graph pin.</li>
+</ol>
               
             </div>
           </div>
