@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Walk Node - Power IK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Walk Node";
+    var mkdocs_page_input_path = "unreal\\walk_node.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Power IK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/change_log/">ChangeLog</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Unreal Plugin</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../old_versions/">Compiling for Old Unreal</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Core Solver</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../bend_directions/">Bend Directions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../limits/">Limits and Stiffness</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../root_rotation/">Root Rotation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../center_of_gravity/">Center of Gravity</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Effectors</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../ground_node/">Ground Node</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control_rig/">Control Rig</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Walk Node</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it Works</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-a-walk-node">Setup a Walk Node</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#limb-settings">Limb Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stepping-settings">Stepping Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#collision-settings">Collision Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#constraints-and-solver-settings">Constraints and Solver Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#debug-view">Debug View</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-setup">Testing Setup</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../walk_blueprint/">Walk Blueprint</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++ SDK</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/solver/">Solver Class</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Settings</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sdk/settings_solver/">Solver Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sdk/settings_ground/">Ground Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sdk/settings_cog/">Center of Gravity Settings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sdk/settings_smoothing/">Effector Smoothing Settings</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Power IK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Features &raquo;</li>
+        
+      
+        
+          <li>Unreal Plugin &raquo;</li>
+        
+      
+    
+    <li>Walk Node</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="walk-node">Walk Node</h1>
+<p>Power IK comes with a dedicated Anim Graph node for procedurally generating walking animation.</p>
+<p><strong>Experimental / Beta: This node is under active development. Future versions will support fully parameterized style adjustment for hip sway, tilt, bobbing, leaning, arm sway, running and more. But even in it's current form, we expect many users will find it useful.</strong></p>
+<p><img alt="Procedural Animation" src="../img/proc_anim/proc_anim.gif" /></p>
+<h2 id="how-it-works">How it Works</h2>
+<p>It helps to understand how the Walk node works. </p>
+<p>The Walk node requires and responds to root motion. When an Actor containing a Skeletal Mesh running a Walk anim graph node is moved in world space, the Walk node responds to the motion by planting and unplanting the feet in a stepping behavior.</p>
+<p>Where to place the feet for the next step is determined by raycasting from the Actor's current world space location and rotation. So the Walk node requires a custom trace channel and sufficient world collision. Additionally, if the Actor is not rotated to face the movement direction, the Walk node will generate "strafing" type locomotion.</p>
+<p>The Walk node does not care about the source of the movement and works equally well if it is from AI navigation, a player controlled Pawn class, or even by manually translating or rotating the Actor with the mouse in the editor.</p>
+<h2 id="setup-a-walk-node">Setup a Walk Node</h2>
+<p><img alt="Node Setup" src="../img/walk_node/node.png" /></p>
+<ol>
+<li>In the Animation Graph, create a Power IK Walk node</li>
+<li>Connect the Output Pose of the Power IK Walk node</li>
+<li>Set the Character Root bone (see Ground Node docs for a description of how to choose a Character Root)</li>
+<li>In the Details section of the Walk node, click the <em>+</em> icon next to the Feet array to add each foot.</li>
+<li>Set the <em>Start Bone</em> and <em>End Bone</em> names for each leg / limb.</li>
+<li>Compile the animation blueprint.</li>
+<li>Select the Walk node and observe the yellow diamonds on the feet bones. If you do not see yellow diamonds, double check the Character Root and Start/End bone names are correctly filled out on all limbs.</li>
+<li>Test the Walking behavior and tune the settings as required.</li>
+</ol>
+<p><strong>Note:</strong> Be sure to setup the "Related Limbs" array as described below to prevent the feet from both stepping at the same time!</p>
+<h2 id="limb-settings">Limb Settings</h2>
+<p><img alt="Limb Settings" src="../img/walk_node/limb.png" /></p>
+<p><strong>Start Bone</strong>: The name of the bone at the origin of the leg. Usually a "hip" or "shoulder".</p>
+<p><strong>End Bone</strong>: The name of the bone at the end of the leg. Usually the "foot".</p>
+<p><strong>Limb Max Length Multiplier</strong>: By default, the raycasts use the initial distance between the Start Bone and End Bone (in the Reference pose) to determine the length of the raycasts used to determine the next footstep location. If the leg is modeled with a large amount of bend by default, you may want to adjust this to allow the raycasts more distance to search for a step.</p>
+<p><strong>Step Length Multiplier</strong>: The step length is the maximum distance from the current planted foot position to the new target foot location (as determined by raycasts) before a "step" is triggered. Values between 0 and 1 will produce shorter steps. Values greater than 1 will create larger steps.</p>
+<p><strong>Step Duration</strong>: The time, in seconds, that this foot will take from unplanting to replanting. Smaller values will produce faster stepping.</p>
+<p><strong>Step Height</strong>: The maximum height, in centimeters, that this foot will reach at the apex of the step.</p>
+<p><strong>Related Limbs</strong>: A list of integer values cooresponding to other limbs in the array that are <em>related</em> to this one. Related limbs will <em>NOT</em> unplant at the same time.</p>
+<p><strong>Rotate Foot to Ground</strong>: A float value from 0 to 1 that determines <em>how much</em> the foot will orient to the ground collision normal. A value of 1 orients the feet exactly to the ground.</p>
+<p><strong>Foot Collision Radius</strong>: A radius around the foot, in centimeters, that is considered "off limits" for other feet to occupy. The foot solver does collision checks to prevent other feet from planting within or <em>passing through</em> this collision radius. This prevents the dreaded "kicking through your shins" bug that plagues all strafing systems.</p>
+<h2 id="stepping-settings">Stepping Settings</h2>
+<p><img alt="Stepping Settings" src="../img/walk_node/stepping.png" /></p>
+<p><strong>Step Max Reach Distance</strong>: A distance, in centimeters, that clamps the root motion to prevent the feet from searching for a new planted position too far from the prior planted position. This is only ever used when the root motion is too fast for the stride length and step duraction to keep up.</p>
+<p><strong>Step Duration Multiplier</strong>: A global multiplier for <em>all</em> limbs to adjust the time per step.</p>
+<p><strong>Step Height Multiplier</strong>: A global multiplier for <em>all</em> limbs to adjust the height per step.</p>
+<p><strong>Step Height Curve (Optional)</strong>: A curve asset, normalized from 0 to 1, that describes how much of the foot height to apply for the duration of the step; where 0 is the start of the step and 1 is the end.</p>
+<p><strong>Step Speed Curve (Optional)</strong>: A curve asset, normalized from 0 to 1, that scales the speed of the foot motion for the duration of the step; where 0 is the start of the step and 1 is the end. The default curve eases the foot into and out of steps.</p>
+<p><strong>Teleport Distance</strong>: The maximum world space distance, in centimeters, that the feet are allowed to be from the Actor location. If the feet are detected beyond this distance, an instant single-frame teleportation is applied to force them back to the Actor's location. This may happen if the Actor is teleported, moved too quickly or when initially spawned.</p>
+<h2 id="collision-settings">Collision Settings</h2>
+<p>Set the Collision Channel to the Unreal trace channel that you want the limbs to raycast against. See the Ground Node docs for more information about how to set this up.</p>
+<h2 id="constraints-and-solver-settings">Constraints and Solver Settings</h2>
+<p>The Walk node is a custom wrapper of the core Power IK solver. See the Solver Node settings for a description of Bend Directions, Excluded Bones, Joint Limits and Max Squash/Stretch Iterations.</p>
+<h2 id="debug-view">Debug View</h2>
+<p>You can view the foot plant locations and ray casts by hitting <em>~</em> to bring up the command console and executing the command:</p>
+<pre><code>showdebug ANIMATION
+</code></pre>
+
+<p>Use Page Up/Down to select the Actor with the Walk node and observe the debug view of the foot effectors, planted locations and raycasts.</p>
+<h2 id="testing-setup">Testing Setup</h2>
+<p>When first setting up a Walk node, it can be helpful to have a blank Actor blueprint to test with. This allows you to Eject while playing in editor, select the Actor and move/drag it with the mouse to observe how the Walking behavior is working.</p>
+<ol>
+<li>Create a blank Actor blueprint</li>
+<li>Add a Skeletal Mesh Component to the Actor</li>
+<li>Create an Animation blueprint for the Character</li>
+<li>Set the Skeletal Mesh Asset and Animation Blueprint on the Skeletal Mesh Actor Component</li>
+<li>Add a Power IK Walk node to the Animation Blueprint</li>
+<li>Setup the Walk node as described in the <em>Setup a Walk Node</em> section</li>
+</ol>
+<p>Now the setup is ready to test:</p>
+<ol>
+<li>Drag the Actor onto a floor into a test level.</li>
+<li>Hit Play, then hit Eject.</li>
+<li>Select the Actor and press W to enter move mode.</li>
+<li>Drag the Actor across the floor to observe the Walking behavior.</li>
+</ol>
+<p>In this way, you can iterate on the settings until the desired walking behavior is achieved.</p>
+<p>Once you are happy with the behavior, copy the Walk node into the final Animation Blueprint (whether AI controlled or player).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../walk_blueprint/" class="btn btn-neutral float-right" title="Walk Blueprint">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../control_rig/" class="btn btn-neutral" title="Control Rig"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../control_rig/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../walk_blueprint/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

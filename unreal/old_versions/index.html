@@ -62,10 +62,16 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Compiling for Old Unreal</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#compile-for-older-unreal-versions">Compile for Older Unreal Versions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#remove-engine-installation">Remove Engine Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-in-project-and-compile">Install in Project and Compile</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Core Solver</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
                 </li>
@@ -81,29 +87,33 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
                 </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+                <li class="toctree-l2"><a class="reference internal" href="#">Effectors</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                <li class="toctree-l3"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                <li class="toctree-l3"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../grounding/">Grounding</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../control_rig/">Control Rig</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ground_node/">Ground Node</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control_rig/">Control Rig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../walk_node/">Walk Node</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../walk_blueprint/">Walk Blueprint</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C++ SDK</span></p>
@@ -165,9 +175,13 @@
 <p>The Power IK Unreal Plugin is currently only maintained on the latest version of Unreal (4.25 at time of writing). But it should be compatible with older versions of Unreal with minimal modifications.</p>
 <h2 id="compile-for-older-unreal-versions">Compile for Older Unreal Versions</h2>
 <p>To use PowerIK with an older version of Unreal, you need to add it to your project and recompile the plugin as part of your project. </p>
-<p>NOTE: First remove and Engine installations of PowerIK before proceeding, but simply deleting the PowerIK folder in the Engine plugin folder in Program Files.</p>
+<h3 id="remove-engine-installation">Remove Engine Installation</h3>
+<p>First remove any Engine installations of PowerIK before proceeding. Simply delete the PowerIK folder located in your engine plugins folder: </p>
+<p>C:\Program Files\Epic Games\UE_4.xx\Engine\Plugins</p>
+<h3 id="install-in-project-and-compile">Install in Project and Compile</h3>
 <ol>
-<li>Add "PowerIK" plugin folder to <strong>YourProject/Plugins/</strong> </li>
+<li>Open your project and enable the Control Rig plugin. Save and close the project.</li>
+<li>Add the "PowerIK" plugin folder to <strong>YourProject/Plugins/</strong> </li>
 <li>Very the location of the .uplugin file is <strong>YourProject/Plugins/PowerIK/PowerIK.uplugin</strong></li>
 <li>Right click on <strong>YourProject.uproject</strong> and select <strong>Generate Visual Studio project files</strong></li>
 <li>Open <strong>YourProject.sln</strong></li>
@@ -175,8 +189,8 @@
 <li>Set the <strong>EngineVersion</strong> to <strong>"4.XX.X"</strong> (replacing X with your version)</li>
 <li>Build the solution and verify that PowerIK is working in your project.</li>
 </ol>
-<p><strong>NOTE:</strong> This process has been tested with 4.23 and 4.24. Older versions of Unreal may introduce minor changes in API that could require more work.</p>
-<p><strong>NOTE:</strong> At some point in the future, once development of PowerIK settles down, Power Animated may provide binary builds for previous versions.</p>
+<p><strong>NOTE:</strong> This process has been tested with 4.23 and 4.24. Older versions of Unreal may introduce minor changes in API that may require more work.</p>
+<p><strong>NOTE:</strong> You must have the Control Rig plugin enabled in your project or you will get compiler errors about missing "RigUnit" header files.</p>
               
             </div>
           </div>

@@ -54,6 +54,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ChangeLog</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#151-2020-jul-01">[1.51] - 2020-JUL-01</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#150-2020-jun-08">[1.50] - 2020-JUN-08</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#148-2020-may-31">[1.48] - 2020-MAY-31</a>
@@ -95,7 +97,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/old_versions/">Compiling for Old Unreal</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Core Solver</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_setup/">Solver Setup</a>
                 </li>
@@ -111,29 +113,33 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_performance/">Solver Performance</a>
                 </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+                <li class="toctree-l2"><a class="reference internal" href="#">Effectors</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../unreal/effector_settings/">Effector Settings</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../unreal/effector_settings/">Effector Settings</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../unreal/effector_smoothing/">Effector Smoothing</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../unreal/effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/grounding/">Grounding</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/control_rig/">Control Rig</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/interactive_rig/">Interactive Rig</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/ground_node/">Ground Node</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/control_rig/">Control Rig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/walk_node/">Walk Node</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/walk_blueprint/">Walk Blueprint</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/debugging/">Debugging</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/packaging/">Packaging</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../unreal/common_issues/">Common Issues</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../unreal/procedural_anim/">Procedural Animation</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C++ SDK</span></p>
@@ -195,6 +201,16 @@ Removed: now removed features.
 Fixed: any bug fixes.
 </code></pre>
 
+<h2 id="151-2020-jul-01">[1.51] - 2020-JUL-01</h2>
+<ul>
+<li>Added: New Anim Graph node! "Power IK Walk" node creates procedural locomotion</li>
+<li>Added: New Core Solver upgrade efficiently produces more accurate and believable reaching</li>
+<li>Fixed: Bug in Core Solver; sub-root weights incorrect when Character Root was max distance from Effector</li>
+<li>Fixed: Bug in Core Solver; Bend Directions not respected when squash caused by sub-root rotation</li>
+<li>Changed: Ground Node's Delta Smooth Speed property exposed as a pin</li>
+<li>Removed: Power IK Rig Component (deprecated last release, use Control Rig now)</li>
+<li>Removed: PowerIK_Funcs blueprint function library (only needed for Rig component)</li>
+</ul>
 <h2 id="150-2020-jun-08">[1.50] - 2020-JUN-08</h2>
 <ul>
 <li>Added: New Power IK Control Rig integration</li>

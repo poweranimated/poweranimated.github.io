@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Grounding - Power IK</title>
+  <title>Ground Node - Power IK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Grounding";
-    var mkdocs_page_input_path = "unreal\\grounding.md";
+    var mkdocs_page_name = "Ground Node";
+    var mkdocs_page_input_path = "unreal\\ground_node.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -61,7 +61,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../old_versions/">Compiling for Old Unreal</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Solver</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Core Solver</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
                 </li>
@@ -77,69 +77,79 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_performance/">Solver Performance</a>
                 </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Effectors</a>
+                <li class="toctree-l2"><a class="reference internal" href="#">Effectors</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
+                <li class="toctree-l3"><a class="reference internal" href="../effector_settings/">Effector Settings</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                <li class="toctree-l3"><a class="reference internal" href="../effector_smoothing/">Effector Smoothing</a>
+                </li>
+    </ul>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Grounding</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Features</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#video-tutorial">Video Tutorial</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Ground Node</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#video-tutorial">Video Tutorial</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-it-works">How it Works</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it Works</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-setup-grounding">How to Setup Grounding</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-setup-grounding">How to Setup Grounding</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#setup-a-ground-node">Setup a Ground Node</a>
+    <li class="toctree-l4"><a class="reference internal" href="#setup-a-ground-node">Setup a Ground Node</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#optional-delta-smooth-speed">(Optional) Delta Smooth Speed</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#optional-pull-weight-and-pull-factors">(Optional) Pull Weight and Pull Factors</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#setup-a-collision-trace-channel">Setup a Collision Trace Channel</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#now-tune-the-slope-settings">Now Tune the Slope Settings</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#interactive-tuning">Interactive Tuning</a>
+    <li class="toctree-l4"><a class="reference internal" href="#how-to-choose-a-character-root-bone">How to Choose a Character Root Bone</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#collision-settings">Collision Settings</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#slope-settings">Slope Settings</a>
+    <li class="toctree-l3"><a class="reference internal" href="#exclude-bones">Exclude Bones</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#stride-scaling">Stride Scaling</a>
+    <li class="toctree-l4"><a class="reference internal" href="#optional-delta-smooth-speed">(Optional) Delta Smooth Speed</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#leaning">Leaning</a>
+    <li class="toctree-l4"><a class="reference internal" href="#optional-pull-weight-and-pull-factors">(Optional) Pull Weight and Pull Factors</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#counter-leaning">Counter Leaning</a>
+    <li class="toctree-l4"><a class="reference internal" href="#setup-a-collision-trace-channel">Setup a Collision Trace Channel</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#root-offset">Root Offset</a>
+    <li class="toctree-l4"><a class="reference internal" href="#now-tune-the-slope-settings">Now Tune the Slope Settings</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#foot-rotation">Foot Rotation</a>
+    <li class="toctree-l4"><a class="reference internal" href="#interactive-tuning">Interactive Tuning</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#foot-offset">Foot Offset</a>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#collision-settings">Collision Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#slope-settings">Slope Settings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#stride-scaling">Stride Scaling</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#leaning">Leaning</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#counter-leaning">Counter Leaning</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#root-offset">Root Offset</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#foot-rotation">Foot Rotation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#foot-offset">Foot Offset</a>
     </li>
         </ul>
     </li>
     </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../control_rig/">Control Rig</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../interactive_rig/">Interactive Rig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control_rig/">Control Rig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../walk_node/">Walk Node</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../walk_blueprint/">Walk Blueprint</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../packaging/">Packaging</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../common_issues/">Common Issues</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../procedural_anim/">Procedural Animation</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C++ SDK</span></p>
@@ -182,11 +192,15 @@
     
       
         
+          <li>Features &raquo;</li>
+        
+      
+        
           <li>Unreal Plugin &raquo;</li>
         
       
     
-    <li>Grounding</li>
+    <li>Ground Node</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -219,14 +233,24 @@ Run solver using new effector locations
 <h3 id="setup-a-ground-node">Setup a Ground Node</h3>
 <ol>
 <li>Create a <em>Power IK Ground</em> node.</li>
+<li>Set the name of the Character Root bone on the node.</li>
 <li>Select the node and open the Details section.</li>
 <li>Add to the <em>Feet</em> list and set <em>Bone Name</em> to the name of the foot bone.</li>
 <li>Set the Collision Trace Channel in the Ground Collision settings.</li>
 </ol>
 <p><img alt="Ground" src="../img/ground/ground_node.png" /></p>
-<p>At this point, Power IK will stick the feet to the ground.</p>
+<p>At this point, Power IK will stick the feet to the ground, pulling the whole body if necessary by translating the Character Root bone.</p>
 <p>The following settings can be used to tune the Ground alignment behavior. Many of these settings are identical to the Power IK Solver settings (since the Ground node is just a different wrapper around the core solver).</p>
 <p><img alt="Ground" src="../img/ground/ground_settings.png" /></p>
+<h3 id="how-to-choose-a-character-root-bone">How to Choose a Character Root Bone</h3>
+<p>The Character Root bone is the top-most bone in the skeleton that represents the "Center of Gravity" of the body. This is usually located between the legs at the base of the spine.</p>
+<p>In the Unreal mannequin, this is called the "Pelvis". It may also be called "Hips", "Body", "COG" or anything else depending on the rig naming convention.</p>
+<p>It is crucial that the Character Root bone moves the entire skin when translated. Typically, this is the ONLY bone in the skeleton that does translate. </p>
+<p>It's position is also important. For good results, it should be located at the base of the spine and have all leg(s), spine(s) and tail(s) as children of it. Usually the <em>Character</em> root bone is <em>not</em> the same as the actual root bone (the top most bone in the hierarchy). </p>
+<p>If you are unsure which bone to use, open the Skeleton editor and follow the foot bone up the hierarchy until you reach the first bone that contains the spine and the legs. Select it and translate it to make sure that it has the desired behavior of moving the whole character from a location near the center of gravity for the creature.</p>
+<h2 id="exclude-bones">Exclude Bones</h2>
+<p>Some skeletons may have multiple bones at the Character Root level and they may even lie ontop of each other. It is important that no bones between the Character Root and the feet are located directly ontop of each other (in the path of lineage from the feet to the root). If they are, add them to the Excluded Bones list.</p>
+<p>Also locate any "twist" or helper bones that are located in the path from the feet up to the Character Root. If the helper bones are <em>between</em> the leg bones, they must be excluded or else Power IK will treat them as an additional leg bone and bend them!</p>
 <h3 id="optional-delta-smooth-speed">(Optional) Delta Smooth Speed</h3>
 <p>The Ground Node exposes the Delta Smooth Speed of the foot effectors. This value controls how quickly the feet adapt to changing terrain height (measured in cm/s). </p>
 <p>If you notice the feet gradually sliding towards the ground height, increase this value until it's no longer noticable. Typically values between 100 and 400 cm/s are suitable for this parameter.</p>
