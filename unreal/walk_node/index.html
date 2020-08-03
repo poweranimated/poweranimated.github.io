@@ -128,6 +128,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../sdk/getting_started_sdk/">Getting Started</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sdk/convert_plugin/">Convert Unreal Plugin</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../sdk/solver/">Solver Class</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Settings</a>
@@ -198,10 +200,10 @@
 <li>In the Animation Graph, create a Power IK Walk node</li>
 <li>Connect the Output Pose of the Power IK Walk node</li>
 <li>Set the Character Root bone (see Ground Node docs for a description of how to choose a Character Root)</li>
-<li>In the Details section of the Walk node, click the <em>+</em> icon next to the Feet array to add each foot.</li>
+<li>In the Details section of the Walk node, click the <em>+</em> icon next to the Limbs array to add each foot.</li>
 <li>Set the <em>Start Bone</em> and <em>End Bone</em> names for each leg / limb.</li>
 <li>Compile the animation blueprint.</li>
-<li>Select the Walk node and observe the yellow diamonds on the feet bones. If you do not see yellow diamonds, double check the Character Root and Start/End bone names are correctly filled out on all limbs.</li>
+<li>Select the Walk node and observe the yellow diamonds on the end/foot bones. If you do not see yellow diamonds, double check the Character Root and Start/End bone names are correctly filled out on all limbs.</li>
 <li>Test the Walking behavior and tune the settings as required.</li>
 </ol>
 <p><strong>Note:</strong> Be sure to setup the "Related Limbs" array as described below to prevent the feet from both stepping at the same time!</p>
