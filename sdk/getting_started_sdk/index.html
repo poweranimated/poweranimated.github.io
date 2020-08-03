@@ -112,17 +112,17 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#unreal-integration-example">Unreal Integration Example</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#install-the-sdk">Install the SDK</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a>
+    <li class="toctree-l2"><a class="reference internal" href="#using-the-unreal-plugin-with-source-code">Using the Unreal Plugin With Source Code</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-overview">Update Overview</a>
+    <li class="toctree-l2"><a class="reference internal" href="#install-the-source-code-sdk">Install the Source Code SDK</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-details">Update Details</a>
+    <li class="toctree-l2"><a class="reference internal" href="#initialization">Initialization</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#shutdown-and-reset">Shutdown and Reset</a>
+    <li class="toctree-l2"><a class="reference internal" href="#update-overview">Update Overview</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#update-details">Update Details</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shutdown-and-reset">Shutdown and Reset</a>
     </li>
     </ul>
                     </li>
@@ -180,7 +180,7 @@
             <div class="section">
               
                 <h1 id="power-ik-c-sdk">Power IK C++ SDK</h1>
-<p>The Power IK C++ SDK allows animation engineers to integrate Power IK into any animation software that can link C++ and uses skeletal animation ().</p>
+<p>The Power IK C++ SDK allows animation engineers to integrate Power IK into any animation software that can link C++ and uses skeletal animation.</p>
 <p>This includes, but is not limited to:</p>
 <ul>
 <li>game engines</li>
@@ -191,26 +191,18 @@
 </ul>
 <p>Power IK is commercially licensed priorietary software. To enquire about licensing our SDK, please contact support@poweranimated.com.</p>
 <h2 id="unreal-integration-example">Unreal Integration Example</h2>
-<p>The best example of how to integrate Power IK can be found right in the default Unreal integration. We have created a class that wraps the SDK and allows rapid integration of the solver into multiple Anim Graph nodes, and also into Unreal's Control Rig plugin.</p>
-<p>See PowerIK_UnrealCore.h for an example Solver wrapper. Clients looking to integrate PowerIK into their own systems should reference this class to observe the necessary parts required to interface with the Power IK solver core.</p>
-<h2 id="install-the-sdk">Install the SDK</h2>
+<p>The best example of how to integrate Power IK can be found right in the default Unreal Plugin. The sample FPowerIKCore class wraps the SDK and allows rapid integration of the solver into multiple Anim Graph nodes, and also into Unreal's Control Rig plugin.</p>
+<p>See PowerIK_UnrealCore.h for the FPowerIKCore class definition. Clients looking to integrate PowerIK into their own systems should reference this class to observe the necessary parts required to interface with the Power IK solver core.</p>
+<h2 id="using-the-unreal-plugin-with-source-code">Using the Unreal Plugin With Source Code</h2>
+<p>To compile and package the Power IK Unreal Plugin from source code, please follow the directions in the Convert Unreal Plugin section of these docs. You can ignore the rest of this document.</p>
+<h2 id="install-the-source-code-sdk">Install the Source Code SDK</h2>
 <ol>
 <li>Copy the entire SDK folder into a suitable location in the project directory.</li>
-<li>
-<p>Add sdk/include to the project's include directories and include:</p>
-<ul>
-<li>sdk/include/PowerIK.h</li>
-<li>sdk/include/PowerIKMath.h</li>
-<li>sdk/include/PowerIKSettings.h</li>
-</ul>
-</li>
-<li>
-<p>Add /sdk/lib/PowerIK.lib to the project linker's additional dependencies.</p>
-</li>
+<li>Add sdk/include to the project's headers</li>
+<li>Add sdk/src to the project's source</li>
 <li>Then include PowerIK.h into the project source file that will use PowerIK.</li>
 </ol>
-<p><strong>Note:</strong>: For dynamically linked binary distributions make sure that sdk/lib/Win64/POWERIK.dll is copied into the packaged build directory and is accessible to the project .exe so that PowerIK can be linked at runtime.</p>
-<h3 id="initialization">Initialization</h3>
+<h2 id="initialization">Initialization</h2>
 <p>PowerIK should be initialized in the following way:</p>
 <ol>
 <li>Instantiate a PowerIK::Solver() class.</li>
@@ -219,8 +211,8 @@
 <li>Call Solver.SetRootBone() to specify the top bone (root of solver)</li>
 <li>Call Solver.AddEffector() for each effector (cannot add/remove effectors at runtime)</li>
 </ol>
-<p>On the <em>first</em> call to Solve(), PowerIK will allocate the necessary memory to support the bones and effectors that were added with AddBone().</p>
-<h3 id="update-overview">Update Overview</h3>
+<p>On the <em>first</em> call to Solve(), PowerIK will allocate the necessary memory to support the bones and effectors that were added with AddBone(). There are no heap allocations after this.</p>
+<h2 id="update-overview">Update Overview</h2>
 <p>Once PowerIK is initialized, it is ready to start Solving.</p>
 <p>At every tick in the simulation update loop:</p>
 <ol>
@@ -230,7 +222,7 @@
 <li>Copy the output pose <em>out</em> of the Solver and use it as desired</li>
 </ol>
 <p><strong>NOTE:</strong> The input pose does not <em>necessarily</em> have to change from frame to frame. PowerIK will work equally well with static poses or animation (and both are useful in different scenarios).</p>
-<h3 id="update-details">Update Details</h3>
+<h2 id="update-details">Update Details</h2>
 <p>The update process should look like this:</p>
 <ol>
 <li>Call Solver.SetBoneTransform() for all bones to provide the input pose (the animation)</li>
@@ -241,7 +233,7 @@
 <p>See AnimNode_PowerIK::CopySolverInputs() and AnimNode_PowerIK::CopySolverOutputs() for examples of how to do these steps in Unreal.</p>
 <p><strong>Note on Transform Spaces:</strong> All transforms (input/ouput on both bones and effectors) are considered to be in <em>Character Space</em> (<em>Component Space</em> in Unreal nomenclature). This space usually has it's origin at the character's feet or root bone. PowerIK solves in this space, so it is most efficient to avoid conversion to/from local/bone space or world space and simply keep all bones and effectors in <em>Character Space</em>.</p>
 <p><strong>Note on PowerIK Math Library:</strong>  PowerIK uses it's own portable math library, so it is required to convert the positions and rotations to/from PowerIK::Vec3 and PowerIK::Quat format. These formats use plain 32-bit floats and should be convertable with any standard 3d-vector or quaternion format.</p>
-<h3 id="shutdown-and-reset">Shutdown and Reset</h3>
+<h2 id="shutdown-and-reset">Shutdown and Reset</h2>
 <p>When the PowerIK::Solver() destructor is called, it releases all allocated memory.</p>
 <p>In cases where it is desirable to add/remove characters using PowerIK often, it may be better to keep a pool of solvers in memory and recycle them. To avoid reallocating memory, consider calling PowerIK::Solver().Reset(). This will clear the internal memory (without releasing it) to be re-used with a different skeleton or different set of effectors. Bones and Effectors must be re-added after calling Reset(). </p>
 <p>Treat a Reset() solver like a newly instantiated Solver(). If the new skeletons have more bones than before Reset(), additional allocations may occur.</p>
