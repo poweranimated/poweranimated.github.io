@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Compiling for Old Unreal - Power IK</title>
+  <title>Body Inertia - Power IK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Compiling for Old Unreal";
-    var mkdocs_page_input_path = "unreal\\old_versions.md";
+    var mkdocs_page_name = "Body Inertia";
+    var mkdocs_page_input_path = "unreal\\inertia.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -59,20 +59,10 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../getting_started_unreal/">Getting Started</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Compiling for Old Unreal</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#compile-for-older-unreal-versions">Compile for Older Unreal Versions</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#remove-engine-installation">Remove Engine Installation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#install-in-project-and-compile">Install in Project and Compile</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../old_versions/">Compiling for Old Unreal</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Core Solver</a>
-    <ul>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Core Solver</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../solver_setup/">Solver Setup</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../solver_bones/">Solver Bones</a>
@@ -83,7 +73,13 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../root_rotation/">Root Rotation</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../inertia/">Body Inertia</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Body Inertia</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#smooth-damping-based-inertia">Smooth Damping Based Inertia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#spring-based-inertia">Spring Based Inertia</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../center_of_gravity/">Center of Gravity</a>
                 </li>
@@ -160,11 +156,15 @@
     
       
         
+          <li>Core Solver &raquo;</li>
+        
+      
+        
           <li>Unreal Plugin &raquo;</li>
         
       
     
-    <li>Compiling for Old Unreal</li>
+    <li>Body Inertia</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -175,26 +175,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="compiling-power-ik-for-old-unreal-versions">Compiling Power IK for Old Unreal Versions</h1>
-<p>The Power IK Unreal Plugin is currently only maintained on the latest version of Unreal (4.25 at time of writing). But it should be compatible with older versions of Unreal with minimal modifications.</p>
-<h2 id="compile-for-older-unreal-versions">Compile for Older Unreal Versions</h2>
-<p>To use PowerIK with an older version of Unreal, you need to add it to your project and recompile the plugin as part of your project. </p>
-<h3 id="remove-engine-installation">Remove Engine Installation</h3>
-<p>First remove any Engine installations of PowerIK before proceeding. Simply delete the PowerIK folder located in your engine plugins folder: </p>
-<p>C:\Program Files\Epic Games\UE_4.xx\Engine\Plugins</p>
-<h3 id="install-in-project-and-compile">Install in Project and Compile</h3>
+                <h1 id="body-inertia">Body Inertia</h1>
+<p>Without any inertia, the body of a skeleton will react immediately to the motion of the effectors. If the effectors are controlling extremeties (like feet and hands) it may be desirable to delay the effect of their motion on the body to give it a better sense of weight.</p>
+<p>Smoothing the body motion approximates the tendency of creatures to spare energy by not moving their core mass any more than is necesssary.</p>
+<p>Inertia is a feature available on all Power IK nodes.</p>
+<h2 id="smooth-damping-based-inertia">Smooth Damping Based Inertia</h2>
+<p>This is the most typical (default) type of inertia. </p>
+<p>This delays the body's reaction to the motion of the effectors. This effect will <strong>not</strong> "wobble" and overshoot. It simply "catches up" to the effector motion in a gradual, dampened and non-linear way.</p>
+<p>To enable "Smooth" inertia:</p>
 <ol>
-<li>Open your project and enable the Control Rig plugin. Save and close the project.</li>
-<li>Add the "PowerIK" plugin folder to <strong>YourProject/Plugins/</strong> </li>
-<li>Very the location of the .uplugin file is <strong>YourProject/Plugins/PowerIK/PowerIK.uplugin</strong></li>
-<li>Right click on <strong>YourProject.uproject</strong> and select <strong>Generate Visual Studio project files</strong></li>
-<li>Open <strong>YourProject.sln</strong></li>
-<li>Locate and open <strong>PowerIK.uplugin</strong> in the Solution Explorer</li>
-<li>Set the <strong>EngineVersion</strong> to <strong>"4.XX.X"</strong> (replacing X with your version)</li>
-<li>Build the solution and verify that PowerIK is working in your project.</li>
+<li>Find the "Body Inertia" section of the Solver settings.</li>
+<li>Set "Apply Inertia To Body" to true.</li>
+<li>Tune the Smooth Factor value.</li>
 </ol>
-<p><strong>NOTE:</strong> This process has been tested with 4.23 and 4.24. Older versions of Unreal may introduce minor changes in API that may require more work.</p>
-<p><strong>NOTE:</strong> You must have the Control Rig plugin enabled in your project or you will get compiler errors about missing "RigUnit" header files.</p>
+<p><strong>Smooth Factor</strong>: The Smooth Factor determines how much the body motion is smoothed when the effectors positions are modified. Typical values range from 1 to 20, which higher numbers smoothing the motion more and causing a longer delay between the effector motion and the body's reaction.</p>
+<h2 id="spring-based-inertia">Spring Based Inertia</h2>
+<p>The Smooth Factor has a few desirable properties. It is unconditionally stable and will not "overshoot" the target body location.</p>
+<p>In some cases though, it may be desirable to give the body a "springy" behavior. This can be achieved by:</p>
+<ol>
+<li>Find the "Body Inertia" section of the Solver settings.</li>
+<li>Set "Apply Inertia To Body" to true.</li>
+<li>Set "Use Spring" to true.</li>
+<li>Tune "Spring Strength" and "Spring Damping" as described below.</li>
+</ol>
+<p><strong>Spring Strength</strong>: Typical values range from 10 to 300. Determines how quickly the body is pulled towards the effectors when they are moved.</p>
+<p><strong>Spring Damping</strong>: Typical values range from 0.01 to 0.5. Dampens the spring motion. Higher values cause the spring motion to settle sooner.</p>
               
             </div>
           </div>
@@ -202,10 +207,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../solver_setup/" class="btn btn-neutral float-right" title="Solver Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../center_of_gravity/" class="btn btn-neutral float-right" title="Center of Gravity">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../getting_started_unreal/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../root_rotation/" class="btn btn-neutral" title="Root Rotation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -231,10 +236,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../getting_started_unreal/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../root_rotation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../solver_setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../center_of_gravity/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -111,6 +111,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/root_rotation/">Root Rotation</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/inertia/">Body Inertia</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/center_of_gravity/">Center of Gravity</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_performance/">Solver Performance</a>
@@ -207,6 +209,11 @@ Fixed: any bug fixes.
 
 <h2 id="152-2020-aug-02">[1.52] - 2020-AUG-02</h2>
 <ul>
+<li>Added: New Body Inertia setting in core solver (with Smooth and Spring modes)</li>
+<li>Added: Body Inertia settings to Ground Node, Walk Node, Solver Node and Control Rig node</li>
+<li>Added: Explicit control over final iteration count in solver (exposed on all nodes)</li>
+<li>Fixed: Ground Node double transform on body when using PullWeights and MoveRoot slope setting</li>
+<li>Changed: Walk Node, does not continuously update target plant location (avoids jitter stepping on uneven terrain)</li>
 <li>Changed: Ground Node, slope setting "Push Feet Outer" supports negative values</li>
 <li>Changed: Walk Node, stepping parameters exposed as pins</li>
 <li>Changed: Walk Node, removed clamp on walk parameters</li>
