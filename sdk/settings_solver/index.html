@@ -77,6 +77,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/center_of_gravity/">Center of Gravity</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/bone_translation/">Bone Translation</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_performance/">Solver Performance</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Effectors</a>
@@ -129,6 +131,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#vec3-worldupnormal">Vec3 WorldUpNormal</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#float-rootrotationmultiplier">float RootRotationMultiplier</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bool-allowbonetranslation">bool AllowBoneTranslation</a>
     </li>
     </ul>
                 </li>
@@ -192,6 +196,8 @@
 <p>Up direction of world. Used for Center of Gravity and Grounding. Default is +Z (Unreal).</p>
 <h2 id="float-rootrotationmultiplier"><code>float RootRotationMultiplier</code></h2>
 <p>Amount to rotate the root in response to effectors. Default is 1.0. Value as high as 3 or 4 may be necessary in some cases.</p>
+<h2 id="bool-allowbonetranslation"><code>bool AllowBoneTranslation</code></h2>
+<p>Set this to true to support translating bone chains. When true, Power IK will re-calculate chain lengths based on the input pose and not try to retain the length of bone chains from the reference pose. This is useful for bone chains that need to squash/stretch by translating.</p>
               
             </div>
           </div>

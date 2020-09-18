@@ -54,6 +54,10 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ChangeLog</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#154-2020-sep-16">[1.54] - 2020-SEP-16</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#153-2020-aug-30">[1.53] - 2020-AUG-30</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#152-2020-aug-02">[1.52] - 2020-AUG-02</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#151-2020-jul-01">[1.51] - 2020-JUL-01</a>
@@ -114,6 +118,8 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/inertia/">Body Inertia</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/center_of_gravity/">Center of Gravity</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../unreal/bone_translation/">Bone Translation</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../unreal/solver_performance/">Solver Performance</a>
                 </li>
@@ -207,12 +213,23 @@ Removed: now removed features.
 Fixed: any bug fixes.
 </code></pre>
 
+<h2 id="154-2020-sep-16">[1.54] - 2020-SEP-16</h2>
+<ul>
+<li>Fixed: Bug, bone scale values reset after going through any Power IK node</li>
+<li>Added: Support for bone translation with new solver AllowBoneTranslation solver setting</li>
+</ul>
+<h2 id="153-2020-aug-30">[1.53] - 2020-AUG-30</h2>
+<ul>
+<li>Fixed: Ground Node, feet angles respect MaxGroundAngle</li>
+<li>Fixed: Control Rig, crash when using more than 1 Control Rig in level</li>
+<li>Fixed: Core Solver, memory leak.</li>
+</ul>
 <h2 id="152-2020-aug-02">[1.52] - 2020-AUG-02</h2>
 <ul>
 <li>Added: New Body Inertia setting in core solver (with Smooth and Spring modes)</li>
 <li>Added: Body Inertia settings to Ground Node, Walk Node, Solver Node and Control Rig node</li>
 <li>Added: Explicit control over final iteration count in solver (exposed on all nodes)</li>
-<li>Fixed: Ground Node double transform on body when using PullWeights and MoveRoot slope setting</li>
+<li>Added: Tuned sample 3rd person Mannequin ground node</li>
 <li>Changed: Walk Node, does not continuously update target plant location (avoids jitter stepping on uneven terrain)</li>
 <li>Changed: Ground Node, slope setting "Push Feet Outer" supports negative values</li>
 <li>Changed: Walk Node, stepping parameters exposed as pins</li>
